@@ -3,8 +3,24 @@ class Api::V1::UsersController < ApplicationController
 
   def show
     user = User.find(params[:id])
-    Api::V1::UsersController.get_connections(user)
+    if user.busy_or_free == "free"
+      Api::V1::UsersController.get_connections(user)
+    end
     render json: user
+  end
+
+  def self.get_connections(user)
+    for i in User.all
+      if i.friends.include?(user.name) &&
+      user.friends.include?(i.name) &&
+      (i.busy_or_free == "free" ||
+      i.connected_to == user.name)
+        user.update({
+          connected_to: i.name,
+          busy_or_free: 'busy'
+        })
+      end
+    end
   end
 
   def update
@@ -15,22 +31,6 @@ class Api::V1::UsersController < ApplicationController
       Api::V1::UsersController.busy_switch(user, params)
     end
     render json: user
-  end
-
-  def self.get_connections(user)
-    if user.busy_or_free == "free"
-      for i in User.all
-        if i.friends.include?(user.name) &&
-        user.friends.include?(i.name) &&
-        (i.busy_or_free == "free" ||
-        i.connected_to == user.name)
-          user.update({
-            connected_to: i.name,
-            busy_or_free: 'busy'
-          })
-        end
-      end
-    end
   end
 
   def self.add_friend(user, params)

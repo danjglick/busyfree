@@ -7,7 +7,6 @@ class FriendsList extends Component {
       friends: [],
       addedFriend: ''
     }
-    this.getUserId = this.getUserId.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -58,16 +57,9 @@ class FriendsList extends Component {
         <form onSubmit={this.handleSubmit}>
           <label>
             Add Friend:
-            <input
-            type="text"
-            value={this.state.addedFriend}
-            onChange={this.handleChange}
-            />
+            <input type="text" value={this.state.addedFriend} onChange={this.handleChange}/>
           </label>
-          <input
-          type="submit"
-          value="Submit"
-          />
+          <input type="submit" value="Submit"/>
         </form>
       </div>
     )
