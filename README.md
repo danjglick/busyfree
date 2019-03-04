@@ -1,5 +1,13 @@
 # README
 
+BusyFree is the simplest way to connect with friends.
+
+Search for them by full name or phone number. Click the big gold button whenever you're free. We'll notify you whenever you and your friends are free at the same time.
+
+Copyright 2019. Dan Glick (danjglick@gmail.com). All rights reserved.
+
+#######
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
