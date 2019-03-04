@@ -1,12 +1,36 @@
+<h1> BusyFree </h1>
+<br/><br/>
+
 <form action="/users" method="post">
-  <label>Name</label>
+  <label>Full Name</label>
   <input name="user[name]" type="text">
+  <%= @error_name %>
+  <br/>
 
   <label>Phone</label>
   <input name="user[phone]" type="text">
+  <%= @error_phone %>
+  <br/>
 
   <label>Password</label>
   <input name="user[password]" type="text">
-  
-  <input type="submit">
+  <%= @error_password %>
+  <br/>
+
+  <%= @alert %>
+  <br/>
+
+  <input type="submit" value="Sign up">
+  - or -
+  <input type="submit" value="(broken) Sign in">
+  - or -
+  <input type="submit" value="(broken) Request text">
+  <br/><br/><br/><br/>
+  BusyFree is the simplest way to connect with friends.
+  <br/><br/>
+  Search for them by full name or phone number.
+  Click the big gold button whenever you&apos;re free.
+  We&apos;ll notify you whenever you and your friends are free at the same time.
+  <br/><br/>
+  Copyright 2019. Dan Glick (danjglick@gmail.com). All rights reserved.
 </form>

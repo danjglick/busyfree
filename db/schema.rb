@@ -22,8 +22,7 @@ ActiveRecord::Schema.define(version: 2019_02_25_152149) do
     t.string "friends", default: [], array: true
     t.string "busy_or_free", default: "busy"
     t.string "connected_to", default: ""
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "just_connected", default: ""
   end
 
 end

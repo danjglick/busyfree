@@ -8,6 +8,7 @@ class BusySwitch extends Component {
       connectedTo: '',
       notification: ''
     }
+    this.notification = ''
     this.busySwitch = this.busySwitch.bind(this)
   }
 
@@ -18,12 +19,12 @@ class BusySwitch extends Component {
 
   componentDidMount() {
     this.timerId = setInterval(
-      () => this.getRequest(),
+      () => this.tick(),
       1000
     )
   }
 
-  getRequest() {
+  tick() {
     fetch(`/api/v1/users/${this.getUserId()}`)
     .then(response => response.json())
     .then(body => {
@@ -54,14 +55,14 @@ class BusySwitch extends Component {
   }
 
   render() {
-    if(this.state.connectedTo != '') {
-      this.setState({
-        notification: " wants to hang!"
-      })
+    if(this.state.connectedTo) {
+      this.notification = " is free!"
+    } else {
+      this.notification = ""
     }
     return(
       <div>
-        <div>{this.state.connectedTo}{this.state.notification}</div>
+        <div>{this.state.connectedTo}{this.notification}</div>
         <br/>
         <button onClick={this.busySwitch}>
           I am {this.state.busyOrFree}
