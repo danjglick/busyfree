@@ -3,10 +3,7 @@ import React, {Component} from 'react'
 class FriendsList extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      friends: [],
-      selectedFriend: ''
-    }
+    this.state = {friends: [], selectedFriend: ''}
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -35,10 +32,7 @@ class FriendsList extends Component {
     fetch(`/api/v1/users/${this.getUserId()}`, {
       method: 'PATCH',
       body: JSON.stringify({selectedFriend: this.state.selectedFriend}),
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
+      headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
       credentials: 'same-origin'
     })
     .then(response => response.json())
@@ -52,19 +46,15 @@ class FriendsList extends Component {
     let friends = this.state.friends.map(friend => {
       key += 1
       return(
-        <div key={key}>
-          {friend} (phone number)
-        </div>
+        <div key={key}> {friend} (phone number) </div>
       )
     })
     return (
       <div>
-        <h2> Friends </h2>
-        <ul> {friends} </ul>
+        <h1> Friends </h1>
+        {friends}
         <form onSubmit={this.handleSubmit}>
-          <label>
-            <input type="text" value={this.state.selectedFriend} onChange={this.handleChange}/>
-          </label>
+          <label> <input type="text" value={this.state.selectedFriend} onChange={this.handleChange}/> </label>
           <input type="submit" value="Add/Remove Friend"/>
         </form>
       </div>

@@ -1,0 +1,28 @@
+<%= form_for(@user) do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= @error_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
+    <%= @error_phone %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.text_field :password %>
+    <%= @error_password %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign in", formaction: 'users' %>
+    - or -
+    <%= f.submit "Sign up" %>
+    - or -
+    <%= f.submit "Request text (broken)" %>
+  </div>
+<% end %>
+<br/><br/>

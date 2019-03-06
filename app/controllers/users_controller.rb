@@ -2,25 +2,41 @@ class UsersController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def new
-    @error_name
-    @error_phone
-    @error_password
   end
 
   def create
-    user = User.create(
-      name: params[:user][:name],
-      phone: params[:user][:phone],
-      password: params[:user][:password]
-    )
-    if user.save
-      redirect_to user
+    if UsersController.signin(params)
+      redirect_to @@user
+    elsif UsersController.signup(params)
+      redirect_to @@user
     else
-      @error_name = user.errors.messages[:name].join('')
-      @error_phone = user.errors.messages[:phone].join('')
-      @error_password = user.errors.messages[:password].join('')
       render :new
     end
+  end
+
+  def self.signin(params)
+    is_successful = false
+    if params[:commit] == "Sign in"
+      for i in User.all
+        if (i.name == params[:user][:name] || i.phone == params[:user][:phone]) && i.password == params[:user][:password]
+          is_successful = true
+          @@user = i
+        end
+      end
+    end
+    return is_successful
+  end
+
+  def self.signup(params)
+    is_successful = false
+    if params[:commit] == "Sign up"
+      form_inputs = {name: params[:user][:name], phone: params[:user][:phone], password: params[:user][:password]}
+      @@user = User.new(form_inputs)
+      if @@user.save
+        is_successful = true
+      end
+    end
+    return is_successful
   end
 
   def show

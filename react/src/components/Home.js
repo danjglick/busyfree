@@ -9,7 +9,6 @@ const Home = props => {
   return(
     <div>
       <BusySwitch/>
-      <br/>
       <a href={settingsUrl}> Settings </a>
     </div>
   )

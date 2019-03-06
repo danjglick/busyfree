@@ -1,36 +1,28 @@
 <h1> BusyFree </h1>
-<br/><br/>
 
-<form action="/users" method="post">
-  <label>Full Name</label>
-  <input name="user[name]" type="text">
-  <%= @error_name %>
-  <br/>
+<%= form_for(User.new) do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
 
-  <label>Phone</label>
-  <input name="user[phone]" type="text">
-  <%= @error_phone %>
-  <br/>
+  <div class="field">
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
+  </div>
 
-  <label>Password</label>
-  <input name="user[password]" type="text">
-  <%= @error_password %>
-  <br/>
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.text_field :password %>
+  </div>
 
-  <%= @alert %>
-  <br/>
+  <div class="actions">
+    <%= f.submit "Sign in" %>
+    <%= f.submit "Sign up" %>
+    <%= f.submit "Request text (broken)" %>
+  </div>
+<% end %>
 
-  <input type="submit" value="Sign up">
-  - or -
-  <input type="submit" value="(broken) Sign in">
-  - or -
-  <input type="submit" value="(broken) Request text">
-  <br/><br/><br/><br/>
-  BusyFree is the simplest way to connect with friends.
-  <br/><br/>
-  Search for them by full name or phone number.
-  Click the big gold button whenever you&apos;re free.
-  We&apos;ll notify you whenever you and your friends are free at the same time.
-  <br/><br/>
-  Copyright 2019. Dan Glick (danjglick@gmail.com). All rights reserved.
-</form>
+<p> BusyFree is the simplest way to connect with friends. </p>
+<p> Search for them by full name or phone number. Click the big gold button whenever you&apos;re free. We&apos;ll notify you whenever you and your friends are free at the same time. </p>
+<p> Copyright 2019. Dan Glick (danjglick@gmail.com). All rights reserved. </p>

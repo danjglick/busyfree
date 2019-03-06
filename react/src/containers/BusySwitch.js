@@ -3,11 +3,7 @@ import React, {Component} from 'react'
 class BusySwitch extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      busyOrFree: 'busy',
-      connectedTo: '',
-      notification: ''
-    }
+    this.state = {busyOrFree: 'busy', connectedTo: '', notification: ''}
     this.notification = ''
     this.busySwitch = this.busySwitch.bind(this)
   }
@@ -28,10 +24,7 @@ class BusySwitch extends Component {
     fetch(`/api/v1/users/${this.getUserId()}`)
     .then(response => response.json())
     .then(body => {
-      this.setState({
-        busyOrFree: body.busy_or_free,
-        connectedTo: body.connected_to
-      })
+      this.setState({busyOrFree: body.busy_or_free, connectedTo: body.connected_to})
     })
   }
 
@@ -39,18 +32,11 @@ class BusySwitch extends Component {
     fetch(`/api/v1/users/${this.getUserId()}`, {
       method: 'PATCH',
       body: JSON.stringify({busyOrFree: this.state.busyOrFree}),
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      credentials: 'same-origin'
-    })
+      headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
+      credentials: 'same-origin'})
     .then(response => response.json())
     .then(body => {
-      this.setState({
-        busyOrFree: body.busy_or_free,
-        connectedTo: body.connected_to
-      })
+      this.setState({busyOrFree: body.busy_or_free, connectedTo: body.connected_to})
     })
   }
 
@@ -63,10 +49,7 @@ class BusySwitch extends Component {
     return(
       <div>
         <div>{this.state.connectedTo}{this.notification}</div>
-        <br/>
-        <button onClick={this.busySwitch}>
-          I am {this.state.busyOrFree}
-        </button>
+        <button onClick={this.busySwitch}> I am {this.state.busyOrFree} </button>
       </div>
     )
   }
