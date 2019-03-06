@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   validates :name, presence: true
   validates :phone, presence: true, uniqueness: true
-  validates :password, presence: true, uniqueness: true
+  validates :password, presence: true
 
   def get_connections
     connected = false

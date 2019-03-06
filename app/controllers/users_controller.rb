@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def new
+    @error
   end
 
   def create
@@ -10,6 +11,7 @@ class UsersController < ApplicationController
     elsif UsersController.signup(params)
       redirect_to @@user
     else
+      @error = 'Try again. For sign-in: name or phone must be populated, password must be populated, and all input must match our records. For sign-up: all fields must be populated, and password must be unique.' 
       render :new
     end
   end
