@@ -26,7 +26,7 @@ class User < ApplicationRecord
     else
       for i in User.all
         if i.name == params[:selectedFriend] && i.name != self.name
-          newFriendsList = self.friends << params[:selectedFriend]
+          newFriendsList = self.friends << [i.name, i.phone] 
           self.update(friends: newFriendsList)
         end
       end

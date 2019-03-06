@@ -46,7 +46,7 @@ class FriendsList extends Component {
     let friends = this.state.friends.map(friend => {
       key += 1
       return(
-        <div key={key}> {friend} (phone number) </div>
+        <div key={key}> {friend[0]} ({friend[1]}) </div>
       )
     })
     return (
