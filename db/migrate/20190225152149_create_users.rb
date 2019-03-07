@@ -10,4 +10,4 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :just_connected, default: ''
     end
   end
-end \
+end

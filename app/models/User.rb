@@ -1,38 +1,32 @@
 class User < ApplicationRecord
   validates :name, presence: true
   validates :phone, presence: true, uniqueness: true
-  validates :password, presence: true
+  validates :password, presence: true, uniqueness: true
 
   def get_connections
     connected = false
-    my_friends_names = []
-    for i in self.friends
-      my_friends_names << i[0]
-    end
+    my_friends_names = self.friends.map {|friend| friend[0]}
     for you in User.all
-      your_friends_names = []
-      for i in you.friends
-        your_friends_names << i[0]
-      end
-      should_connect = (self.busy_or_free == "free" && you.busy_or_free == "free" && my_friends_names.include?(you.name) && your_friends_names.include?(self.name))
-      # currently_connected = (self.connected_to == you.name)
-      recently_connected = (you.name == self.just_connected || you.just_connected == self.name)
-      # if (should_connect || currently_connected) && !recently_connected
-      if should_connect && !recently_connected
+      your_friends_names = you.friends.map {|friend| friend[0]}
+      both_free = (self.busy_or_free == "free" && you.busy_or_free == "free")
+      both_friends = (my_friends_names.include?(you.name) && your_friends_names.include?(self.name))
+      currently_connected = (self.connected_to == you.name || you.connected_to == self.name)
+      recently_connected = (self.just_connected == you.name || you.just_connected == self.name)
+      if (both_free || currently_connected) && both_friends && !recently_connected
         connected = true
         self.update({connected_to: you.name, busy_or_free: 'busy'})
       end
     end
     if connected == false
-      self.connected_to = ''
+      self.update({connected_to: ''})
     end
   end
 
-  def switch_busy(params)
+  def update_busy(params)
     if params[:busyOrFree] == "free"
       self.update({busy_or_free: "busy", connected_to: ''})
     elsif params[:busyOrFree] == "busy"
-      self.just_connected = self.connected_to
+      self.update({just_connected: self.connected_to})
       self.update({busy_or_free: "free", connected_to: ''})
     end
   end

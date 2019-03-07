@@ -58,9 +58,8 @@ class FriendsList extends Component {
       id += 1
       return(
         <div id={id}>
-          <div>
-            {friend[0]} ({friend[1]}) <button id={id} onClick={this.removeFriend}> x </button>
-          </div>
+          {friend[0]} ({friend[1]})
+          <button id={id} onClick={this.removeFriend}> x </button>
         </div>
       )
     })
@@ -69,7 +68,9 @@ class FriendsList extends Component {
         <h1> Friends </h1>
         {friends}
         <form onSubmit={this.addFriend}>
-          <label> <input type="text" value={this.state.friendToAdd} onChange={this.handleChange}/> </label>
+          <label>
+            <input type="text" value={this.state.friendToAdd} onChange={this.handleChange}/>
+          </label>
           <input type="submit" value="Add Friend"/>
         </form>
       </div>
