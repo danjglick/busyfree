@@ -10,7 +10,7 @@ class Api::V1::UsersController < ApplicationController
   def update
     user = User.find(params[:id])
     if params.key?(:busyOrFree)
-      user.switch_busy(params)
+      user.update_busy(params)
     elsif params.key?(:friendToAdd)
       user.add_friend(params)
     elsif params.key?(:friendToRemove)
