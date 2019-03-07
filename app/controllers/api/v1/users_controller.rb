@@ -9,10 +9,12 @@ class Api::V1::UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
-    if params.key?(:selectedFriend)
-      user.update_friends(params)
-    elsif params.key?(:busyOrFree)
-      user.update_busy(params)
+    if params.key?(:busyOrFree)
+      user.switch_busy(params)
+    elsif params.key?(:friendToAdd)
+      user.add_friend(params)
+    elsif params.key?(:friendToRemove)
+      user.remove_friend(params)
     end
     user.save
     render json: user

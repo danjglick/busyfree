@@ -3,9 +3,10 @@ import React, {Component} from 'react'
 class FriendsList extends Component {
   constructor(props) {
     super(props)
-    this.state = {friends: [], selectedFriend: ''}
+    this.state = {friends: [], friendToAdd: ''}
+    this.addFriend = this.addFriend.bind(this)
+    this.removeFriend = this.removeFriend.bind(this)
     this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   getUserId() {
@@ -21,17 +22,10 @@ class FriendsList extends Component {
     })
   }
 
-  handleChange(event) {
-    this.setState({selectedFriend: event.target.value});
-  }
-
-  handleSubmit(event) {
-    if(event.target.dataset.friend != null) {
-      this.setState({selectedFriend: event.target.dataset.friend})
-    }
+  addFriend(event) {
     fetch(`/api/v1/users/${this.getUserId()}`, {
       method: 'PATCH',
-      body: JSON.stringify({selectedFriend: this.state.selectedFriend}),
+      body: JSON.stringify({friendToAdd: this.state.friendToAdd}),
       headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
       credentials: 'same-origin'
     })
@@ -41,21 +35,42 @@ class FriendsList extends Component {
     })
   }
 
+  removeFriend(event) {
+    fetch(`/api/v1/users/${this.getUserId()}`, {
+      method: 'PATCH',
+      body: JSON.stringify({friendToRemove: this.state.friends[event.target.id]}),
+      headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
+      credentials: 'same-origin'
+    })
+    .then(response => response.json())
+    .then(body => {
+      this.setState({friends: body.friends})
+    })
+  }
+
+  handleChange(event) {
+    this.setState({friendToAdd: event.target.value});
+  }
+
   render() {
-    let key = -1
+    let id = -1
     let friends = this.state.friends.map(friend => {
-      key += 1
+      id += 1
       return(
-        <div key={key}> {friend[0]} ({friend[1]}) </div>
+        <div id={id}>
+          <div>
+            {friend[0]} ({friend[1]}) <button id={id} onClick={this.removeFriend}> x </button>
+          </div>
+        </div>
       )
     })
     return (
       <div>
         <h1> Friends </h1>
         {friends}
-        <form onSubmit={this.handleSubmit}>
-          <label> <input type="text" value={this.state.selectedFriend} onChange={this.handleChange}/> </label>
-          <input type="submit" value="Add/Remove Friend"/>
+        <form onSubmit={this.addFriend}>
+          <label> <input type="text" value={this.state.friendToAdd} onChange={this.handleChange}/> </label>
+          <input type="submit" value="Add Friend"/>
         </form>
       </div>
     )
