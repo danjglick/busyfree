@@ -72,6 +72,7 @@ class FriendsList extends Component {
           </label>
           <input type="submit" value="Add Friend"/>
         </form>
+        {this.state.alert}
       </div>
     )
   }

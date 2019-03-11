@@ -33,7 +33,7 @@ class User < ApplicationRecord
 
   def add_friend(params)
     for i in User.all
-      if i.name == params[:friendToAdd] && i.name != self.name && !self.friends.any? {|friend| friend[0] == i.name}
+      if (i.name == params[:friendToAdd] || i.phone == params[:friendToAdd]) && i.phone != self.phone && !self.friends.any? {|friend| friend[1] == i.phone}
         newFriendsList = self.friends << [i.name, i.phone]
         self.update(friends: newFriendsList)
       end
