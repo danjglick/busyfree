@@ -8,14 +8,26 @@ const Settings = props => {
 
   return(
     <div>
+      <br/>
       <a href={homeUrl}> Back </a>
-      <FriendsList/>
+      <br/> <hr/>
+      <h1> Friends </h1>
+      <div className="settingsContent">
+        <FriendsList/>
+      </div>
+      <br/> <hr/>
       <h1> Account </h1>
-      <a className="signout" href='/'> Sign out </a>
+      <div className="settingsContent">
+        <a className="signout" href='/'> Sign out </a>
+      </div>
+      <br/> <hr/>
       <h1> About </h1>
-      <p> BusyFree is the simplest way to connect with friends. </p>
-      <p> Search for them by full name or phone number. Click the big gold button whenever you&apos;re free. We&apos;ll notify you whenever you and your friends are free at the same time. </p>
-      <p> Copyright 2019. Dan Glick (danjglick@gmail.com). All rights reserved. </p>
+      <div className="settingsContent">
+        <p> BusyFree is a simpler way to connect with friends. </p>
+        <p> Search for them by full name or phone number. Click the big gold button whenever you&apos;re free. We&apos;ll notify you whenever you and your friends are free at the same time. </p>
+        <p> Copyright 2019. Dan Glick (danjglick@gmail.com). All rights reserved. </p>
+      </div>
+      <br/> <hr/>
     </div>
   )
 }

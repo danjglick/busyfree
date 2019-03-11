@@ -59,13 +59,12 @@ class FriendsList extends Component {
       return(
         <div id={id}>
           {friend[0]} ({friend[1]})
-          <button id={id} onClick={this.removeFriend}> x </button>
+          <button id={id} onClick={this.removeFriend} className="removeFriendButton"> X </button>
         </div>
       )
     })
     return (
       <div>
-        <h1> Friends </h1>
         {friends}
         <form onSubmit={this.addFriend}>
           <label>

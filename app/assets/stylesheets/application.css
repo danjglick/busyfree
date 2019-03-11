@@ -19,7 +19,7 @@
 :root {
   --main-blue: #B6E2FF;
   --main-yellow: #F8D45A;
-  --main-dark: #1C2129;
+  --main-dark: #282828;
   --main-light: #E4E8ED;
 }
 
@@ -37,18 +37,34 @@ a {
   color: var(--main-dark);
   display: block;
   text-align: center;
-  text-decoration: none;
 }
 
 input, button {
   background-color: var(--main-light);
   font-weight: bold;
+  outline: none;
 }
 
 .busySwitch {
   border-color: var(--main-dark);
-  outline: none;
   font-size: 2em;
+  margin-top: 4em;
+}
+
+.signout {
+  text-align: left;
+}
+
+.removeFriendButton {
+  background-color: var(--main-blue);
+  border-color: var(--main-blue);
+  color: var(--main-dark);
+  -webkit-text-stroke: .5px var(--main-light);
+  font-size: 1em;
+}
+
+.settingsContent {
+  padding-left: 2em;
 }
 
 #yesChecked {
@@ -60,13 +76,15 @@ input, button {
 }
 
 #notification {
+  text-align: center;
   color: var(--main-yellow);
   -webkit-text-stroke: 1px var(--main-dark);
   font-size: 2em;
   font-weight: bold;
+  margin-top: 4em;
 }
 
-.signout {
-  text-align: left;
-  text-decoration: underline;
+#settingsLink {
+  margin-top: 8em;
+  text-align: center;
 }
