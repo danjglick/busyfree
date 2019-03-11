@@ -53,13 +53,13 @@ class FriendsList extends Component {
   }
 
   render() {
-    let id = -1
+    let key = -1
     let friends = this.state.friends.map(friend => {
-      id += 1
+      key += 1
       return(
-        <div id={id}>
+        <div key={key}>
           {friend[0]} ({friend[1]})
-          <button id={id} onClick={this.removeFriend} className="removeFriendButton"> X </button>
+          <button id={key} onClick={this.removeFriend} className="removeFriendButton"> X </button>
         </div>
       )
     })
