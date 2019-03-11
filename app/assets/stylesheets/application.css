@@ -20,7 +20,7 @@
   --main-blue: #B6E2FF;
   --main-yellow: #F8D45A;
   --main-dark: #1C2129;
-  --main-light: #D8DCDD;
+  --main-light: #E4E8ED;
 }
 
 body {
@@ -30,23 +30,7 @@ body {
   background-color: var(--main-blue);
   font-family: 'Roboto', sans-serif;
   color: var(--main-dark);
-}
-
-.busySwitch {
-  border-color: var(--main-dark);
-  outline: none;
-  font-size: 2em;
-  color: var(--main-dark)
-}
-
-#yesChecked {background-color: var(--main-yellow)}
-
-#noChecked {background-color: var(--main-light)}
-
-#notification {
-  color: var(--main-yellow);
-  -webkit-text-stroke: 1px var(--main-dark);
-  font-size: 4em;
+  font-weight: bold;
 }
 
 a {
@@ -56,8 +40,33 @@ a {
   text-decoration: none;
 }
 
+input, button {
+  background-color: var(--main-light);
+  font-weight: bold;
+}
+
+.busySwitch {
+  border-color: var(--main-dark);
+  outline: none;
+  font-size: 2em;
+}
+
+#yesChecked {
+  background-color: var(--main-yellow);
+}
+
+#noChecked {
+  background-color: var(--main-light);
+}
+
+#notification {
+  color: var(--main-yellow);
+  -webkit-text-stroke: 1px var(--main-dark);
+  font-size: 2em;
+  font-weight: bold;
+}
+
 .signout {
-  color: var(--main-dark);
   text-align: left;
   text-decoration: underline;
 }

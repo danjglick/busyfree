@@ -60,7 +60,7 @@ class BusySwitch extends Component {
     const rightCorners = {borderRadius: `0 ${curveValue} ${curveValue} 0`}
     return(
       <div>
-        <div id="notification">{this.state.connectedTo}{this.notification}</div>
+        <div className="busySwitch" id="notification"> {this.state.connectedTo}{this.notification} </div>
         <button className="busySwitch" id={this.busyChecked} onClick={this.busySwitch} style={leftCorners}> Busy </button>
         <button className="busySwitch" id={this.freeChecked} onClick={this.busySwitch} style={rightCorners}> Free </button>
       </div>
