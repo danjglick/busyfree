@@ -12,6 +12,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="field">
     <%= f.label :password %>
     <%= f.text_field :password %>
   </div>
@@ -20,6 +25,9 @@
     <%= f.submit "Sign In" %>
     <%= f.submit "Sign Up" %>
     <%= f.submit "Forgot Password?" %> <br/>
-    <%= @error %>
   </div>
+
+  <% if @is_error %>
+    Try again. For sign-in: name or phone or email must be populated, password must be populated, and all input must match our records. For sign-up: all fields must be populated, and password must be unique. For forgot-password: email must match our records. Your phone number is used for identification purposes only, and your email address is only used if you need to be reminded of your password.
+  <% end %>
 <% end %>

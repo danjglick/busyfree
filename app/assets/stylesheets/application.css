@@ -13,3 +13,51 @@
  *= require_tree .
  *= require_self
  */
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+:root {
+  --main-blue: #B6E2FF;
+  --main-yellow: #F8D45A;
+  --main-dark: #1C2129;
+  --main-light: #D8DCDD;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--main-blue);
+  font-family: 'Roboto', sans-serif;
+  color: var(--main-dark);
+}
+
+.busySwitch {
+  border-color: var(--main-dark);
+  outline: none;
+  font-size: 2em;
+  color: var(--main-dark)
+}
+
+#yesChecked {background-color: var(--main-yellow)}
+
+#noChecked {background-color: var(--main-light)}
+
+#notification {
+  color: var(--main-yellow);
+  -webkit-text-stroke: 1px var(--main-dark);
+  font-size: 4em;
+}
+
+a {
+  color: var(--main-dark);
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+
+.signout {
+  color: var(--main-dark);
+  text-align: left;
+  text-decoration: underline;
+}

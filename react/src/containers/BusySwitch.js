@@ -5,6 +5,8 @@ class BusySwitch extends Component {
     super(props)
     this.state = {busyOrFree: 'busy', connectedTo: '', notification: ''}
     this.notification = ''
+    this.busyChecked = ''
+    this.freeChecked = ''
     this.busySwitch = this.busySwitch.bind(this)
   }
 
@@ -46,10 +48,21 @@ class BusySwitch extends Component {
     } else {
       this.notification = ""
     }
+    if(this.state.busyOrFree == "busy") {
+      this.busyChecked = "yesChecked"
+      this.freeChecked = "noChecked"
+    } else {
+      this.busyChecked = "noChecked"
+      this.freeChecked = "yesChecked"
+    }
+    let curveValue = '1em'
+    const leftCorners = {borderRadius: `${curveValue} 0 0 ${curveValue}`}
+    const rightCorners = {borderRadius: `0 ${curveValue} ${curveValue} 0`}
     return(
       <div>
-        <div>{this.state.connectedTo}{this.notification}</div>
-        <button onClick={this.busySwitch}> I am {this.state.busyOrFree} </button>
+        <div id="notification">{this.state.connectedTo}{this.notification}</div>
+        <button className="busySwitch" id={this.busyChecked} onClick={this.busySwitch} style={leftCorners}> Busy </button>
+        <button className="busySwitch" id={this.freeChecked} onClick={this.busySwitch} style={rightCorners}> Free </button>
       </div>
     )
   }

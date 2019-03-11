@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def new
-    @error
+    @is_error
   end
 
   def show
@@ -16,8 +16,12 @@ class UsersController < ApplicationController
       redirect_to @@user
     elsif UsersController.signup(params)
       redirect_to @@user
+    elsif params[:commit] == "Forgot Password?" && User.all.any? {|user| user.email == params[:user][:email]}
+      user = User.where(email: params[:user][:email]).first
+      PasswordMailer.password_email(user).deliver!
+      render :new
     else
-      @error = 'Try again. For sign-in: name or phone must be populated, password must be populated, and all input must match our records. For sign-up: all fields must be populated, and password must be unique.'
+      @is_error = true
       render :new
     end
   end
@@ -38,7 +42,7 @@ class UsersController < ApplicationController
   def self.signup(params)
     bool = false
     if params[:commit] == "Sign Up"
-      form_inputs = {name: params[:user][:name], phone: params[:user][:phone], password: params[:user][:password]}
+      form_inputs = {name: params[:user][:name], phone: params[:user][:phone], email: params[:user][:email], password: params[:user][:password]}
       @@user = User.new(form_inputs)
       if @@user.save
         bool = true

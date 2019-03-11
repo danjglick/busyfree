@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2019_02_25_152149) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "phone"
+    t.string "email"
     t.string "password"
     t.string "friends", default: [], array: true
     t.string "busy_or_free", default: "busy"

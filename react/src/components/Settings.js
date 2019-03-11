@@ -11,7 +11,7 @@ const Settings = props => {
       <a href={homeUrl}> Back </a>
       <FriendsList/>
       <h1> Account </h1>
-      <a href='/'> Sign out </a>
+      <a className="signout" href='/'> Sign out </a>
       <h1> About </h1>
       <p> BusyFree is the simplest way to connect with friends. </p>
       <p> Search for them by full name or phone number. Click the big gold button whenever you&apos;re free. We&apos;ll notify you whenever you and your friends are free at the same time. </p>
