@@ -1,9 +1,9 @@
-import React from 'react'
+import React, {Component} from 'react'
 
 const AccountSettings = props => {
-  // if (props.clickedHeadline != 'Account') {
-  //   return null
-  // }
+  if (props.clickedHeading != "Account") {
+    return null
+  }
   return(
     <div className="settingsContent">
       <a className="signout" href='/'> Sign out </a>

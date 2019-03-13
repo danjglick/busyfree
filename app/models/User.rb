@@ -33,7 +33,7 @@ class User < ApplicationRecord
 
   def add_friend(params)
     for i in User.all
-      if i.name.casecmp(params[:friendToAdd]) == 0 && i.phone != self.phone && !self.friends.any? {|friend| friend[1] == i.phone}
+      if i.phone == params[:friendToAdd] && i.phone != self.phone && !self.friends.any? {|friend| friend[1] == i.phone}
         newFriendsList = self.friends << [i.name, i.phone]
         self.update(friends: newFriendsList)
       end

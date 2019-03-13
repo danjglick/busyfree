@@ -1,9 +1,9 @@
 import React from 'react'
 
 const About = props => {
-  // if (props.clickedHeader != 'About') {
-  //   return null
-  // }
+  if (props.clickedHeading != "About") {
+    return null
+  }
   return(
     <div className="settingsContent">
       <p> BusyFree is a simpler way to connect with friends. </p>

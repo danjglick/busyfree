@@ -30,7 +30,7 @@ class FriendsList extends Component {
     fetch(`/api/v1/users/${this.getUserId()}`, {
       method: 'PATCH',
       body: JSON.stringify(
-        {friendToAdd: this.state.searchResults[event.target.id][0]}
+        {friendToAdd: this.state.searchResults[event.target.id][1]}
       ),
       headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
       credentials: 'same-origin'
