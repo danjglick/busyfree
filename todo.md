@@ -4,6 +4,9 @@ BusyFree ToDo
 
 FEATURES
 
+delete search my phone feature
+simply show users that match search params above like 3 characters
+
 Root: home page
 Signin/up form to settings page
 default :id in url to 0, which triggers prompts to signup
