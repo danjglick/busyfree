@@ -25,13 +25,13 @@ class FriendsList extends Component {
   addFriend(event) {
     fetch(`/api/v1/users/${this.getUserId()}`, {
       method: 'PATCH',
-      body: JSON.stringify({friendToAdd: this.state.friendToAdd}),
+      body: JSON.stringify({friendToAdd: this.state.searchResults[event.target.id][0]}),
       headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
       credentials: 'same-origin'
     })
     .then(response => response.json())
     .then(body => {
-      this.setState({friends: body.friends})
+      this.setState({friends: body.friends, searchResults: []})
     })
   }
 
@@ -64,7 +64,7 @@ class FriendsList extends Component {
           }
         }
       }
-      this.setState({searchResults: newSearchResults})  
+      this.setState({searchResults: newSearchResults})
     })
   }
 
@@ -83,8 +83,8 @@ class FriendsList extends Component {
     let searchResults = this.state.searchResults.map(searchResult => {
       key += 1
       return(
-        <div key = {key}>
-          {searchResult[0]} ({searchResult[1]})
+        <div key={key}>
+          <button id={key} onClick={this.addFriend}> {searchResult[0]} ({searchResult[1]}) </button>
         </div>
       )
     })
@@ -93,9 +93,8 @@ class FriendsList extends Component {
         {friends}
         <form onSubmit={this.addFriend}>
           <label>
-            <input type="text" value={this.state.friendToAdd} onChange={this.handleChange}/>
+            <input type="text" placeholder="Search for friends!" value={this.state.friendToAdd} onChange={this.handleChange}/>
           </label>
-          <input type="submit" value="Add Friend"/>
         </form>
         {searchResults}
       </div>
