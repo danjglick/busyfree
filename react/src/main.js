@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Home from './components/home'
-import Settings from './components/settings'
+import Settings from './containers/settings'
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(

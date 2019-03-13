@@ -63,6 +63,12 @@ input, button {
   font-size: 1em;
 }
 
+.settingsHeaders {
+  background-color: var(--main-blue);
+  border: none;
+  font-size: 2em;
+}
+
 .settingsContent {
   padding-left: 2em;
 }

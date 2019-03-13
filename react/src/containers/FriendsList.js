@@ -3,15 +3,19 @@ import React, {Component} from 'react'
 class FriendsList extends Component {
   constructor(props) {
     super(props)
-    this.state = {friends: [], friendToAdd: '', searchResults: []}
+    this.state = {
+      friends: [],
+      friendToAdd: '',
+      searchResults: []
+    }
     this.addFriend = this.addFriend.bind(this)
     this.removeFriend = this.removeFriend.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
 
   getUserId() {
-    let urlSplit = window.location.href.split('/')
-    return urlSplit[urlSplit.length - 2]
+    let splitUrl = window.location.href.split('/')
+    return splitUrl[splitUrl.length - 2]
   }
 
   componentDidMount() {
@@ -25,20 +29,26 @@ class FriendsList extends Component {
   addFriend(event) {
     fetch(`/api/v1/users/${this.getUserId()}`, {
       method: 'PATCH',
-      body: JSON.stringify({friendToAdd: this.state.searchResults[event.target.id][0]}),
+      body: JSON.stringify(
+        {friendToAdd: this.state.searchResults[event.target.id][0]}
+      ),
       headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
       credentials: 'same-origin'
     })
     .then(response => response.json())
     .then(body => {
-      this.setState({friends: body.friends, searchResults: []})
+      this.setState(
+        {friends: body.friends, searchResults: []}
+      )
     })
   }
 
   removeFriend(event) {
     fetch(`/api/v1/users/${this.getUserId()}`, {
       method: 'PATCH',
-      body: JSON.stringify({friendToRemove: this.state.friends[event.target.id]}),
+      body: JSON.stringify(
+        {friendToRemove: this.state.friends[event.target.id]}
+      ),
       headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
       credentials: 'same-origin'
     })
@@ -75,7 +85,13 @@ class FriendsList extends Component {
       return(
         <div key={key}>
           {friend[0]} ({friend[1]})
-          <button id={key} onClick={this.removeFriend} className="removeFriendButton"> X </button>
+          <button
+            id={key}
+            onClick={this.removeFriend}
+            className="removeFriendButton"
+          >
+          X
+          </button>
         </div>
       )
     })
@@ -84,16 +100,29 @@ class FriendsList extends Component {
       key += 1
       return(
         <div key={key}>
-          <button id={key} onClick={this.addFriend}> {searchResult[0]} ({searchResult[1]}) </button>
+          <button
+            id={key}
+            onClick={this.addFriend}
+          >
+            {searchResult[0]} ({searchResult[1]})
+          </button>
         </div>
       )
     })
+    if (this.props.clickedHeading != "Friends") {
+      return null
+    }
     return (
       <div>
         {friends}
         <form onSubmit={this.addFriend}>
           <label>
-            <input type="text" placeholder="Search for friends!" value={this.state.friendToAdd} onChange={this.handleChange}/>
+            <input
+              type="text"
+              placeholder="Search for friends..."
+              value={this.state.friendToAdd}
+              onChange={this.handleChange}
+            />
           </label>
         </form>
         {searchResults}
