@@ -23,7 +23,7 @@
   --main-light: #E4E8ED;
 }
 
-body {
+body, html {
   background-color: var(--main-blue);
   font-family: 'Roboto', sans-serif;
   color: var(--main-dark);

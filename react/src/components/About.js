@@ -6,9 +6,24 @@ const About = props => {
   }
   return(
     <div className="settingsContent">
-      <p> BusyFree is a simpler way to connect with friends. </p>
-      <p> Add friends to your list (which only you can see). Then click the big gold button whenever you&apos;re free (which only you can see). We&apos;ll notify you whenever you and your friends are free at the same time. </p>
-      <p> Copyright 2019. Dan Glick (danjglick@gmail.com). All rights reserved. </p>
+      <p>
+        BusyFree is a simpler way
+        to connect with others.
+      </p>
+      <p>
+        Just add your friends, then
+        click the big gold button whenever you&apos;re free.
+        (We won&apos;t tell a soul.)
+      </p>
+      <p>
+        We&apos;ll just notify you whenever you
+        and your friends are free at the same time.
+      </p>
+      <p>
+        Copyright 2019.
+        Dan Glick (danjglick@gmail.com).
+        All rights reserved.
+      </p>
     </div>
   )
 }
