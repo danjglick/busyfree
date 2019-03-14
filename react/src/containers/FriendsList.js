@@ -66,9 +66,9 @@ class FriendsList extends Component {
     .then(body => {
       let newSearchResults = []
       let areSearchResultsPresent = false
-      if(event.target.value.length > 2) {
-        for(let i=0; i<body.length; i++) {
-          if(body[i].name.slice(0, event.target.value.length).toUpperCase() == event.target.value.toUpperCase()) {
+      if (event.target.value.length > 2) {
+        for (let i=0; i<body.length; i++) {
+          if (body[i].name.slice(0, event.target.value.length).toUpperCase() == event.target.value.toUpperCase()) {
             newSearchResults.push([body[i].name, body[i].phone])
             areSearchResultsPresent = true
           }
@@ -84,7 +84,7 @@ class FriendsList extends Component {
       key += 1
       return(
         <div key={key}>
-          {friend[0]} ({friend[1]})
+          {friend[0]}
           <button
             id={key}
             onClick={this.removeFriend}
@@ -104,7 +104,7 @@ class FriendsList extends Component {
             id={key}
             onClick={this.addFriend}
           >
-            {searchResult[0]} ({searchResult[1]})
+            {searchResult[0]} (&#9742;{searchResult[1]})
           </button>
         </div>
       )

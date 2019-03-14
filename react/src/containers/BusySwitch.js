@@ -3,7 +3,11 @@ import React, {Component} from 'react'
 class BusySwitch extends Component {
   constructor(props) {
     super(props)
-    this.state = {busyOrFree: 'busy', connectedTo: '', notification: ''}
+    this.state = {
+      busyOrFree: 'busy',
+      connectedTo: '',
+      notification: ''
+    }
     this.notification = ''
     this.busyChecked = ''
     this.freeChecked = ''
@@ -26,19 +30,30 @@ class BusySwitch extends Component {
     fetch(`/api/v1/users/${this.getUserId()}`)
     .then(response => response.json())
     .then(body => {
-      this.setState({busyOrFree: body.busy_or_free, connectedTo: body.connected_to})
+      this.setState({
+        busyOrFree: body.busy_or_free,
+        connectedTo: body.connected_to
+      })
     })
   }
 
   busySwitch() {
     fetch(`/api/v1/users/${this.getUserId()}`, {
       method: 'PATCH',
-      body: JSON.stringify({busyOrFree: this.state.busyOrFree}),
-      headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
+      body: JSON.stringify(
+        {busyOrFree: this.state.busyOrFree}
+      ),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
       credentials: 'same-origin'})
     .then(response => response.json())
     .then(body => {
-      this.setState({busyOrFree: body.busy_or_free, connectedTo: body.connected_to})
+      this.setState({
+        busyOrFree: body.busy_or_free,
+        connectedTo: body.connected_to
+      })
     })
   }
 
@@ -57,9 +72,22 @@ class BusySwitch extends Component {
     }
     return(
       <div>
-        <div id="notification"> {this.state.connectedTo}{this.notification} </div>
-        <button className="busySwitch busy" id={this.busyChecked} onClick={this.busySwitch}> Busy </button>
-        <button className="busySwitch free" id={this.freeChecked} onClick={this.busySwitch}> Free </button>
+        <div id="notification">
+          {this.state.connectedTo}
+          {this.notification}
+        </div>
+        <button
+          className="busySwitch busy"
+          id={this.busyChecked}
+          onClick={this.busySwitch}
+        > Busy
+        </button>
+        <button
+          className="busySwitch free"
+          id={this.freeChecked}
+          onClick={this.busySwitch}
+        > Free
+        </button>
       </div>
     )
   }

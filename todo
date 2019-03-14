@@ -27,6 +27,8 @@ new.html.erb is too coupled with users_controller.rb via the former’s User.new
 Fix constant db queries
 get_connections only runs when home page is up, and then it updates the db constantly
 
+abstract getUserId()
+
 ————————
 
 FUTURE

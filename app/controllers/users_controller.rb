@@ -30,7 +30,10 @@ class UsersController < ApplicationController
     bool = false
     if params[:commit] == "Sign In"
       for i in User.all
-        if (i.name == params[:user][:name] || i.phone == params[:user][:phone]) && i.password == params[:user][:password]
+        names_match = (i.name == params[:user][:name])
+        phones_match = (i.phone == params[:user][:phone])
+        passwords_match = (i.password == params[:user][:password])
+        if (names_match || phones_match) && passwords_match
           bool = true
           @@user = i
         end
@@ -42,7 +45,12 @@ class UsersController < ApplicationController
   def self.signup(params)
     bool = false
     if params[:commit] == "Sign Up"
-      form_inputs = {name: params[:user][:name], phone: params[:user][:phone], email: params[:user][:email], password: params[:user][:password]}
+      form_inputs = {
+        name: params[:user][:name],
+        phone: params[:user][:phone],
+        email: params[:user][:email],
+        password: params[:user][:password]
+      }
       @@user = User.new(form_inputs)
       if @@user.save
         bool = true

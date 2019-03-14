@@ -12,7 +12,6 @@ class Settings extends Component {
 
   handleClick(event) {
     this.setState({clickedHeading: event.target.value})
-    console.log(`settings.js: ${this.state.clickedHeading}`)
   }
 
   render() {
@@ -21,24 +20,22 @@ class Settings extends Component {
     let homeUrl = `/users/${userId}`
     return(
       <div>
-        <br/>
+        <br />
         <a href={homeUrl}> Back </a>
         <br />
         <button
           className="settingsHeading"
           onClick={this.handleClick}
           value="Friends"
-        >
-          Friends
+        > Friends
         </button >
         <FriendsList clickedHeading={this.state.clickedHeading} />
-        <br/>
+        <br />
         <button
           className="settingsHeading"
           onClick={this.handleClick}
           value="Account"
-        >
-          Account
+        > Account
         </button>
         <AccountSettings clickedHeading={this.state.clickedHeading} />
         <br />
@@ -46,8 +43,7 @@ class Settings extends Component {
           className="settingsHeading"
           onClick={this.handleClick}
           value="About"
-        >
-          About
+        > About
         </button>
         <About clickedHeading={this.state.clickedHeading}/>
         <br />

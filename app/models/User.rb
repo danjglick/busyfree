@@ -14,26 +14,40 @@ class User < ApplicationRecord
       recently_connected = (self.just_connected == you.name || you.just_connected == self.name)
       if (both_free || currently_connected) && both_friends && !recently_connected
         connected = true
-        self.update({connected_to: you.name, busy_or_free: 'busy'})
+        self.update({
+          connected_to: you.name,
+          busy_or_free: 'busy'
+        })
       end
     end
     if connected == false
-      self.update({connected_to: ''})
+      self.connected_to = ''
     end
   end
 
   def update_busy(params)
     if params[:busyOrFree] == "free"
-      self.update({busy_or_free: "busy", connected_to: ''})
+      self.update({
+        busy_or_free: "busy",
+        connected_to: ''
+      })
     elsif params[:busyOrFree] == "busy"
-      self.update({just_connected: self.connected_to})
-      self.update({busy_or_free: "free", connected_to: ''})
+      self.just_connected = self.connected_to
+      self.update({
+        busy_or_free: "free",
+        connected_to: ''
+      })
     end
   end
 
   def add_friend(params)
     for i in User.all
-      if i.phone == params[:friendToAdd] && i.phone != self.phone && !self.friends.any? {|friend| friend[1] == i.phone}
+      phones_match = (i.phone == params[:friendToAdd])
+      not_self = (i.phone != self.phone)
+      not_a_friend = (!self.friends.any? {|friend|
+        friend[1] == i.phone}
+      )
+      if phones_match && not_self && not_a_friend
         newFriendsList = self.friends << [i.name, i.phone]
         self.update(friends: newFriendsList)
       end
@@ -41,7 +55,9 @@ class User < ApplicationRecord
   end
 
   def remove_friend(params)
-    newFriendsList = self.friends.delete_if {|friend| friend == params[:friendToRemove]}
+    newFriendsList = self.friends.delete_if {|friend|
+      friend == params[:friendToRemove]
+    }
     self.update(friends: newFriendsList)
   end
 end
