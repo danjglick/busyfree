@@ -1,0 +1,23 @@
+.settingsHeading {
+  background-color: var(--main-blue);
+  border: none;
+  font-size: 2em;
+}
+
+input, button {
+  background-color: var(--main-light);
+  font-weight: bold;
+  outline: none;
+}
+
+.settingsContent {
+  padding-left: 2em;
+}
+
+.removeFriendButton {
+  background-color: var(--main-blue);
+  border-color: var(--main-blue);
+  color: var(--main-dark);
+  -webkit-text-stroke: .5px var(--main-light);
+  font-size: 1em;
+}

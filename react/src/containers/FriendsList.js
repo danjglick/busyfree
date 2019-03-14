@@ -113,13 +113,13 @@ class FriendsList extends Component {
       return null
     }
     return (
-      <div>
+      <div className="settingsContent">
         {friends}
         <form onSubmit={this.addFriend}>
           <label>
             <input
               type="text"
-              placeholder="Search for friends..."
+              placeholder="Add your friends!"
               value={this.state.friendToAdd}
               onChange={this.handleChange}
             />

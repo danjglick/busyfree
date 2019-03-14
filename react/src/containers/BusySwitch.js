@@ -55,14 +55,11 @@ class BusySwitch extends Component {
       this.busyChecked = "noChecked"
       this.freeChecked = "yesChecked"
     }
-    let curveValue = '1em'
-    const leftCorners = {borderRadius: `${curveValue} 0 0 ${curveValue}`, marginLeft: '260px'}
-    const rightCorners = {borderRadius: `0 ${curveValue} ${curveValue} 0`, marginRight: '260px'}
     return(
       <div>
-        <div className="busySwitch" id="notification"> {this.state.connectedTo}{this.notification} </div>
-        <button className="busySwitch" id={this.busyChecked} style={leftCorners} onClick={this.busySwitch}> Busy </button>
-        <button className="busySwitch" id={this.freeChecked} style={rightCorners} onClick={this.busySwitch}> Free </button>
+        <div id="notification"> {this.state.connectedTo}{this.notification} </div>
+        <button className="busySwitch busy" id={this.busyChecked} onClick={this.busySwitch}> Busy </button>
+        <button className="busySwitch free" id={this.freeChecked} onClick={this.busySwitch}> Free </button>
       </div>
     )
   }

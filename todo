@@ -4,6 +4,10 @@ BusyFree ToDo
 
 FEATURES
 
+Deploy!!
+
+css!
+
 Root: home page
 Signin/up form to settings page
 default :id in url to 0, which triggers prompts to signup
@@ -11,19 +15,8 @@ default :id in url to 0, which triggers prompts to signup
 Forgot password
 Popup window asks for email address
 
-Refactor css.
-Make it flex.
-Divide it into stylesheets
-Make it look how it does when zoomed in as much as possible
-Inline styling out of busyswitch.js
-
 User validations
 Maybe Do some on front end to prevent unnecessary db queries
-
-Duplicate name
-If duplicate, prompt to search by phone
-
-collapsing settings
 
 Edit account info
 

@@ -1,0 +1,27 @@
+#notification {
+  color: var(--main-yellow);
+  -webkit-text-stroke: 1px black;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.busySwitch {
+  border-color: var(--main-dark);
+  font-size: 2em;
+}
+
+.busy {
+  border-radius: 1em 0 0 1em;
+}
+
+.free {
+  border-radius: 0 1em 1em 0;
+}
+
+#yesChecked {
+  background-color: var(--main-yellow);
+}
+
+#noChecked {
+  background-color: var(--main-light);
+}

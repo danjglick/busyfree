@@ -25,18 +25,16 @@ class Settings extends Component {
         <a href={homeUrl}> Back </a>
         <br />
         <button
-          className="settingsHeaders"
+          className="settingsHeading"
           onClick={this.handleClick}
           value="Friends"
         >
           Friends
-        </button>
-        <div className="settingsContent">
-          <FriendsList clickedHeading={this.state.clickedHeading} />
-        </div>
-        <br />
+        </button >
+        <FriendsList clickedHeading={this.state.clickedHeading} />
+        <br/>
         <button
-          className="settingsHeaders"
+          className="settingsHeading"
           onClick={this.handleClick}
           value="Account"
         >
@@ -45,7 +43,7 @@ class Settings extends Component {
         <AccountSettings clickedHeading={this.state.clickedHeading} />
         <br />
         <button
-          className="settingsHeaders"
+          className="settingsHeading"
           onClick={this.handleClick}
           value="About"
         >
