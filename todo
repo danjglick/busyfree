@@ -10,25 +10,11 @@ grid/flexbox
 zoomed in
 centered
 
-Root
-home
-Signin/up form to settings page
+signin
+to settings
 default :id in url to 0, which triggers prompts to signup
-User validations
-Maybe Do some on front end to prevent unnecessary db queries
+more validations
 Forgot password
-Popup window asks for email address
-edit account?
-
-actions
-Create my own controller actions
-lunch academy
-new.html.erb is too coupled with users_controller.rb via the former’s User.new and the latter’s params[:commit]
-Fix constant db queries
-get_connections only runs when home page is up, and then it updates the db constantly
-
-abstract getUserId()
-
 ————————
 
 FUTURE

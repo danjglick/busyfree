@@ -13,10 +13,9 @@ const About = props => {
       <p>
         Just add your friends, then
         click the big gold button whenever you&apos;re free.
-        (We won&apos;t tell a soul.)
       </p>
       <p>
-        We&apos;ll just notify you whenever you
+        We&apos;ll notify you whenever you
         and your friends are free at the same time.
       </p>
       <p>

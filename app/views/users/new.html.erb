@@ -1,6 +1,6 @@
 <h1> BusyFree </h1>
 
-<%= form_for(User.new) do |f| %>
+<%= form_for(@user) do |f| %>
   <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>
@@ -9,11 +9,6 @@
   <div class="field">
     <%= f.label :phone %>
     <%= f.text_field :phone %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
   </div>
 
   <div class="field">
@@ -28,6 +23,8 @@
   </div>
 
   <% if @is_error %>
-    Try again. For sign-in: name or phone or email must be populated, password must be populated, and all input must match our records. For sign-up: all fields must be populated, and password must be unique. For forgot-password: email must match our records. Your phone number is used for identification purposes only, and your email address is only used if you need to be reminded of your password.
+    <p> Try again. </p>
+    <p> To sign in: name or phone must be populated, password must be populated, and all input must match our records. </p>
+    <p> To sign up: all fields must be populated, and password must be unique. </p>
   <% end %>
 <% end %>

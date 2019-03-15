@@ -3,7 +3,6 @@ class CreateUsers < ActiveRecord::Migration[5.2]
     create_table :users do |t|
       t.string :name
       t.string :phone
-      t.string :email
       t.string :password
       t.string :friends, array: true, default:[]
       t.string :busy_or_free, default: "busy"

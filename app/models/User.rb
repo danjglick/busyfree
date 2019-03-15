@@ -5,11 +5,11 @@ class User < ApplicationRecord
 
   def get_connections
     connected = false
-    my_friends_names = self.friends.map {|friend| friend[0]}
+    my_friends_phones = self.friends.map {|friend| friend[1]}
     for you in User.all
-      your_friends_names = you.friends.map {|friend| friend[0]}
+      your_friends_phones = you.friends.map {|friend| friend[1]}
       both_free = (self.busy_or_free == "free" && you.busy_or_free == "free")
-      both_friends = (my_friends_names.include?(you.name) && your_friends_names.include?(self.name))
+      both_friends = (my_friends_phones.include?(you.phone) && your_friends_phones.include?(self.phone))
       currently_connected = (self.connected_to == you.name || you.connected_to == self.name)
       recently_connected = (self.just_connected == you.name || you.just_connected == self.name)
       if (both_free || currently_connected) && both_friends && !recently_connected
@@ -44,10 +44,10 @@ class User < ApplicationRecord
     for i in User.all
       phones_match = (i.phone == params[:friendToAdd])
       not_self = (i.phone != self.phone)
-      not_a_friend = (!self.friends.any? {|friend|
+      not_friend = (!self.friends.any? {|friend|
         friend[1] == i.phone}
       )
-      if phones_match && not_self && not_a_friend
+      if phones_match && not_self && not_friend
         newFriendsList = self.friends << [i.name, i.phone]
         self.update(friends: newFriendsList)
       end

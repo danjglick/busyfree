@@ -89,8 +89,7 @@ class FriendsList extends Component {
             id={key}
             onClick={this.removeFriend}
             className="removeFriendButton"
-          >
-          X
+          > X
           </button>
         </div>
       )
