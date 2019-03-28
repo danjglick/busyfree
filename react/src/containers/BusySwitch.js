@@ -5,8 +5,7 @@ class BusySwitch extends Component {
     super(props)
     this.state = {
       busyOrFree: 'busy',
-      connectedTo: '',
-      notification: ''
+      connectedTo: ''
     }
     this.notification = ''
     this.busyChecked = ''
@@ -40,14 +39,10 @@ class BusySwitch extends Component {
   busySwitch() {
     fetch(`/api/v1/users/${this.getUserId()}`, {
       method: 'PATCH',
-      body: JSON.stringify(
-        {busyOrFree: this.state.busyOrFree}
-      ),
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      credentials: 'same-origin'})
+      body: JSON.stringify({busyOrFree: this.state.busyOrFree}),
+      headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
+      credentials: 'same-origin'
+    })
     .then(response => response.json())
     .then(body => {
       this.setState({
@@ -80,13 +75,13 @@ class BusySwitch extends Component {
           className="busySwitch busy"
           id={this.busyChecked}
           onClick={this.busySwitch}
-        > Busy
+          > busy
         </button>
         <button
           className="busySwitch free"
           id={this.freeChecked}
           onClick={this.busySwitch}
-        > Free
+          > free
         </button>
       </div>
     )

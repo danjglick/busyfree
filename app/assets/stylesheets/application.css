@@ -17,8 +17,8 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 :root {
-  --main-blue: #B6E2FF;
-  --main-yellow: #F8D45A;
+  --main-blue: #ADDFFF;
+  --main-yellow: #FFDF00; /* --main-yellow: #F8D45A; */
   --main-dark: #282828;
   --main-light: #E4E8ED;
 }

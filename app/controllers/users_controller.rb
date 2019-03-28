@@ -6,12 +6,6 @@ class UsersController < ApplicationController
     @is_error
   end
 
-  def show
-  end
-
-  def edit
-  end
-
   def create
     if self.signin(params)
       redirect_to @user
@@ -23,24 +17,30 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+  end
+
+  def edit
+  end
+
   def signin(params)
-    bool = false
+    is_successful = false
     if params[:commit] == "Sign In"
       for i in User.all
         names_match = (i.name == params[:user][:name])
         phones_match = (i.phone == params[:user][:phone])
         passwords_match = (i.password == params[:user][:password])
         if (names_match || phones_match) && passwords_match
-          bool = true
+          is_successful = true
           @user = i
         end
       end
     end
-    return bool
+    return is_successful
   end
 
   def signup(params)
-    bool = false
+    is_successful = false
     if params[:commit] == "Sign Up"
       form_inputs = {
         name: params[:user][:name],
@@ -49,9 +49,9 @@ class UsersController < ApplicationController
       }
       @user = User.new(form_inputs)
       if @user.save
-        bool = true
+        is_successful = true
       end
     end
-    return bool
+    return is_successful
   end
 end
