@@ -29,10 +29,12 @@ class BusySwitch extends Component {
     fetch(`/api/v1/users/${this.getUserId()}`)
     .then(response => response.json())
     .then(body => {
-      this.setState({
-        busyOrFree: body.busy_or_free,
-        connectedTo: body.connected_to
-      })
+      if(this.getUserId() != 1) {
+        this.setState({
+          busyOrFree: body.busy_or_free,
+          connectedTo: body.connected_to
+        })
+      }
     })
   }
 
