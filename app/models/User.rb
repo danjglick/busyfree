@@ -4,7 +4,7 @@ class User < ApplicationRecord
   validates :password, presence: true, uniqueness: true
 
   def get_connections
-    connected = false
+    is_connected = false
     my_friends_phones = self.friends.map {|friend| friend[1]}
     for you in User.all
       your_friends_phones = you.friends.map {|friend| friend[1]}
@@ -13,14 +13,14 @@ class User < ApplicationRecord
       currently_connected = (self.connected_to == you.name || you.connected_to == self.name)
       recently_connected = (self.just_connected == you.name || you.just_connected == self.name)
       if (both_free || currently_connected) && both_friends && !recently_connected
-        connected = true
+        is_connected = true
         self.update({
           connected_to: you.name,
           busy_or_free: 'busy'
         })
       end
     end
-    if connected == false
+    if is_connected == false
       self.connected_to = ''
     end
   end
@@ -45,11 +45,11 @@ class User < ApplicationRecord
       phones_match = (i.phone == params[:friendToAdd])
       not_self = (i.phone != self.phone)
       not_friend = (!self.friends.any? {|friend|
-        friend[1] == i.phone}
-      )
+        friend[1] == i.phone
+      })
       if phones_match && not_self && not_friend
         newFriendsList = self.friends << [i.name, i.phone]
-        self.update(friends: newFriendsList)
+        self.friends = newFriendsList
       end
     end
   end
@@ -58,6 +58,6 @@ class User < ApplicationRecord
     newFriendsList = self.friends.delete_if {|friend|
       friend == params[:friendToRemove]
     }
-    self.update(friends: newFriendsList)
+    self.friends = newFriendsList
   end
 end

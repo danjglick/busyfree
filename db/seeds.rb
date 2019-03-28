@@ -6,7 +6,35 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(name:"abby", phone:"1", password:"p")
-User.create(name:"jill", phone:"2", password:"j")
-User.create(name:"drake", phone:"3", password:"d")
-User.create(name:"sally", phone:"9", password:"s")
+User.create(id: 1, name: '0', phone: '0', password: '0')
+User.create(id: 2, name: 'Frank', phone: 1, password: 'p')
+
+# def seed_users
+#   names = [
+#     'Jerry Moon',
+#     'Steve Bob',
+#     'Abby Gunshabbon',
+#     'Kevin Uke',
+#     'Maureen Gosling',
+#     'Debbie Wu',
+#     'Danielle Stevens',
+#     'Daniel Smith',
+#     'Dan Golden',
+#     'Abigail Wong'
+#   phones = [
+#     '1'
+#   ]
+#   passwords = []
+#   for name in names
+#     for phone in phones
+#       for password in passwords
+#         User.create(name: name, phone: phone, password: password)
+#         names.delete(name)
+#         phones.delete(phone)
+#         passwords.delete(phone)
+#       end
+#     end
+#   end
+# end
+#
+# seed_users

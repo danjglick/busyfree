@@ -65,6 +65,9 @@ class BusySwitch extends Component {
       this.busyChecked = "noChecked"
       this.freeChecked = "yesChecked"
     }
+    if(this.getUserId() == 1 && this.state.busyOrFree == 'free') {
+      this.notification = "Sign-in to see who else is free!"
+    }
     return(
       <div>
         <div id="notification">
