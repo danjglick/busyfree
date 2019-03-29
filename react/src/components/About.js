@@ -12,16 +12,15 @@ const About = props => {
         to connect with others.
       </p>
       <p>
-        Just add your friends, then tap the big
+        just add your friends, then tap the big
         yellow button whenever you&apos;re free.
       </p>
       <p>
-        We&apos;ll notify you whenever you and
+        we&apos;ll notify you whenever you and
         your friends are free at the same time.
       </p>
       <p>
-        &copy;2019
-        <div> Dan Glick (danjglick@gmail.com) </div>
+        &copy;2019. Dan Glick (danjglick@gmail.com)
       </p>
     </div>
   )

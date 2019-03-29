@@ -7,7 +7,7 @@ const AccountSettings = props => {
   return(
     <div className="settingsContent">
       <a className="signout" href='/'>
-        Sign out
+        sign out
       </a>
     </div>
   )

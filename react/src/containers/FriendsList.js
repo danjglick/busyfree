@@ -121,7 +121,7 @@ class FriendsList extends Component {
           <label>
             <input
               type="text"
-              placeholder="Search for your friends!"
+              placeholder="search for your friends!"
               value={this.state.friendToAdd}
               onChange={this.handleChange}
             />

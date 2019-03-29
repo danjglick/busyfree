@@ -12,7 +12,8 @@ const Home = props => {
       <a
         id="settingsLink"
         href={settingsUrl}
-        > Settings
+        >
+        <i className="fas fa-cogs"></i>
       </a>
     </div>
   )

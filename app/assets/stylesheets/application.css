@@ -30,6 +30,17 @@ body, html {
   font-weight: bold;
 }
 
+input, button {
+  background-color: var(--main-light);
+  font-weight: bold;
+  outline: none;
+}
+
 a {
   color: var(--main-dark);
+}
+
+.fas {
+  color: var(--main-dark);
+  font-size: 1.5em;
 }

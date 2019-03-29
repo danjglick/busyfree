@@ -19,34 +19,31 @@ class Settings extends Component {
     let userId = urlSplit[urlSplit.length - 2]
     let homeUrl = `/users/${userId}`
     return(
-      <div>
-        <br />
-        <a href={homeUrl}> Back </a>
-        <br />
+      <div> <br />
+        <a href={homeUrl}>
+          <i className="fas fa-hand-point-left"></i>
+        </a> <br />
         <button
           className="settingsHeading"
           onClick={this.handleClick}
           value="Friends"
-        > Friends
+          > friends
         </button >
-        <FriendsList clickedHeading={this.state.clickedHeading} />
-        <br />
+        <FriendsList clickedHeading={this.state.clickedHeading} /> <br />
         <button
           className="settingsHeading"
           onClick={this.handleClick}
           value="Account"
-        > Account
+          > account
         </button>
-        <AccountSettings clickedHeading={this.state.clickedHeading} />
-        <br />
+        <AccountSettings clickedHeading={this.state.clickedHeading} /> <br />
         <button
           className="settingsHeading"
           onClick={this.handleClick}
           value="About"
-        > About
+          > about
         </button>
-        <About clickedHeading={this.state.clickedHeading}/>
-        <br />
+        <About clickedHeading={this.state.clickedHeading}/> <br />
       </div>
     )
   }
