@@ -30,7 +30,7 @@ class FriendsList extends Component {
     fetch(`/api/v1/users/${this.getUserId()}`, {
       method: 'PATCH',
       body: JSON.stringify(
-        {friendToAdd: this.state.searchResults[event.target.id][1]}
+        {friendToAdd: this.state.searchResults[event.target.id]}
       ),
       headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
       credentials: 'same-origin'
@@ -69,7 +69,7 @@ class FriendsList extends Component {
       if (event.target.value.length > 2) {
         for (let i=0; i<body.length; i++) {
           if (body[i].name.slice(0, event.target.value.length).toUpperCase() == event.target.value.toUpperCase()) {
-            newSearchResults.push([body[i].name, body[i].phone])
+            newSearchResults.push({name: body[i].name, id: body[i].id})
             areSearchResultsPresent = true
           }
         }
@@ -82,17 +82,19 @@ class FriendsList extends Component {
     let key = -1
     let friends = this.state.friends.map(friend => {
       key += 1
-      return(
-        <div key={key}>
-          {friend[0]}
-          <button
-            id={key}
-            onClick={this.removeFriend}
-            className="removeFriendButton"
-          > X
-          </button>
-        </div>
-      )
+      if (!(this.getUserId() == 1)) {
+        return(
+          <div key={key}>
+            {friend.name}
+            <button
+              id={key}
+              onClick={this.removeFriend}
+              className="removeFriendButton"
+            > X
+            </button>
+          </div>
+        )
+      }
     })
     key = -1
     let searchResults = this.state.searchResults.map(searchResult => {
@@ -103,7 +105,7 @@ class FriendsList extends Component {
             id={key}
             onClick={this.addFriend}
           >
-            {searchResult[0]} (&#9742;{searchResult[1]})
+            {searchResult.name}
           </button>
         </div>
       )

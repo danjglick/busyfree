@@ -1,15 +1,14 @@
 class User < ApplicationRecord
   validates :name, presence: true
-  validates :phone, presence: true, uniqueness: true
   validates :password, presence: true, uniqueness: true
 
   def get_connections
     is_connected = false
-    my_friends_phones = self.friends.map {|friend| friend[1]}
+    my_friends_ids = self.friends.map {|friend| friend['id']}
     for you in User.all
-      your_friends_phones = you.friends.map {|friend| friend[1]}
+      your_friends_ids = you.friends.map {|friend| friend['id']}
       both_free = (self.busy_or_free == "free" && you.busy_or_free == "free")
-      both_friends = (my_friends_phones.include?(you.phone) && your_friends_phones.include?(self.phone))
+      both_friends = (my_friends_ids.include?(you.id) && your_friends_ids.include?(self.id))
       currently_connected = (self.connected_to == you.name || you.connected_to == self.name)
       recently_connected = (self.just_connected == you.name || you.just_connected == self.name)
       if (both_free || currently_connected) && both_friends && !recently_connected
@@ -42,14 +41,13 @@ class User < ApplicationRecord
 
   def add_friend(params)
     for i in User.all
-      phones_match = (i.phone == params[:friendToAdd])
-      not_self = (i.phone != self.phone)
+      in_db = (i.id == params[:friendToAdd][:id])
+      not_self = (i.id != self.id)
       not_friend = (!self.friends.any? {|friend|
-        friend[1] == i.phone
+        i.id == friend['id']
       })
-      if phones_match && not_self && not_friend
-        newFriendsList = self.friends << [i.name, i.phone]
-        self.friends = newFriendsList
+      if in_db && not_self && not_friend
+        self.friends << ({name: i.name, id: i.id})
       end
     end
   end
