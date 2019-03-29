@@ -1,13 +1,19 @@
-.settingsHeading {
-  background-color: var(--main-blue);
-  border: none;
-  font-size: 2em;
-}
-
 input, button {
   background-color: var(--main-light);
   font-weight: bold;
   outline: none;
+}
+
+.searchResult {
+  background-color: var(--main-blue);
+  border: none;
+  font-size: 1em;
+}
+
+.settingsHeading {
+  background-color: var(--main-blue);
+  border: none;
+  font-size: 2em;
 }
 
 .settingsContent {
