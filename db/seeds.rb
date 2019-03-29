@@ -7,29 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create(id: 1, name: '0', password: '0')
-User.create(id: 2, name: 'Frank', password: 'p')
-User.create(id: 3, name: 'Dan', password: 'tot')
-User.create(id: 4, name: 'Franz', password: 'cool')
-
-# def seed_users
-#   names = [
-#     '0',
-#     'Steve Bob',
-#     'Abby Gunshabbon'
-#   passwords = [
-#     '1',
-#   ]
-#   passwords = []
-#   for name in names
-#     for phone in phones
-#       for password in passwords
-#         User.create(name: name, phone: phone, password: password)
-#         names.delete(name)
-#         phones.delete(phone)
-#         passwords.delete(phone)
-#       end
-#     end
-#   end
-# end
-#
-# seed_users
+User.create(id: 2, name: 'Frank Smith', password: 'p')
+User.create(id: 3, name: 'Dan Peterson', password: 'tot')
+User.create(id: 4, name: 'Franz Oppenheimer', password: 'cool')
+User.create(id: 5, name: 'Debbie Moon', password: 'dumbdinger')
+User.create(id: 6, name: 'Daniel John', password: 'hardknocklife')
+User.create(id: 7, name: 'Danielle Thompson', password: 'guessme7')

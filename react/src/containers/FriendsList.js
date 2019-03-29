@@ -103,6 +103,7 @@ class FriendsList extends Component {
         <div key={key}>
           <button
             id={key}
+            className='searchResult'
             onClick={this.addFriend}
           >
             {searchResult.name}
@@ -120,7 +121,7 @@ class FriendsList extends Component {
           <label>
             <input
               type="text"
-              placeholder="Add your friends!"
+              placeholder="Search for your friends!"
               value={this.state.friendToAdd}
               onChange={this.handleChange}
             />

@@ -1,20 +1,15 @@
 TODO
 
-Deploy
-I’m not home right now but i think you should have yarn install in your post install script
-And have your node_modules in your .gitignore
-asset pipeline
-
-css
-grid/flexbox
-zoomed in
-centered
-
 signin
-to settings
-default :id in url to 0, which triggers prompts to signup
-more validations
-Forgot password
+
+deploy
+
+responsive css
+
+notification & email
+
+profile pictures
+
 ————————
 
 FUTURE
@@ -26,6 +21,8 @@ Activities
 chat
 
 Swiping through friends
+
+sell data?
 
 Ads
 

@@ -7,7 +7,7 @@ const About = props => {
   return(
     <div className="settingsContent">
       <p>
-        <span id="notification">BusyFree </span>
+        <span id="notification">busyfree </span>
         is a simpler way
         to connect with others.
       </p>
