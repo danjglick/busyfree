@@ -90,7 +90,7 @@ class FriendsList extends Component {
               id={key}
               onClick={this.removeFriend}
               className="removeFriendButton"
-            > X
+              > X
             </button>
           </div>
         )
@@ -105,8 +105,7 @@ class FriendsList extends Component {
             id={key}
             className='searchResult'
             onClick={this.addFriend}
-          >
-            {searchResult.name}
+            > {searchResult.name}
           </button>
         </div>
       )
@@ -116,7 +115,7 @@ class FriendsList extends Component {
     }
     return (
       <div className="settingsContent">
-        {friends}
+        <p> {friends} </p>
         <form onSubmit={this.addFriend}>
           <label>
             <input

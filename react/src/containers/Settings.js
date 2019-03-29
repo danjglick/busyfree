@@ -28,9 +28,9 @@ class Settings extends Component {
           onClick={this.handleClick}
           value="Friends"
           > friends
-        </button >
+        </button>
         <FriendsList clickedHeading={this.state.clickedHeading} /> <br />
-        <button
+          <button
           className="settingsHeading"
           onClick={this.handleClick}
           value="Account"
