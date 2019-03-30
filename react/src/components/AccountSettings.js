@@ -15,6 +15,8 @@ class AccountSettings extends Component {
       .then(body => {
         this.setState({welcomeMsg: `welcome, ${body.name}`})
       })
+    } else {
+
     }
   }
 
@@ -26,7 +28,7 @@ class AccountSettings extends Component {
       <div className="settingsContent">
         <p> {this.state.welcomeMsg} </p>
         <a className="signout" href='/'>
-          sign out
+          sign-out
         </a>
       </div>
     )

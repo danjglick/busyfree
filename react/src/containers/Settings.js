@@ -20,9 +20,7 @@ class Settings extends Component {
     let homeUrl = `/users/${userId}`
     return(
       <div> <br />
-        <a href={homeUrl}>
-          <i className="fas fa-hand-point-left"></i>
-        </a> <br />
+        <a href={homeUrl}> back </a> <br />
         <button
           className="settingsHeading"
           onClick={this.handleClick}
