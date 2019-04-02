@@ -18,7 +18,7 @@ class Settings extends Component {
     let homeUrl = `/users/${JSON.parse(localStorage.user).id}`
     return(
       <div>
-        <p>
+        <p id='backLinkContainer'>
           <a href={homeUrl}> back </a>
         </p>
         <button

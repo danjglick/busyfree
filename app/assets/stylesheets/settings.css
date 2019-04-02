@@ -21,3 +21,8 @@
   -webkit-text-stroke: .5px var(--main-light);
   font-size: 1em;
 }
+
+#backLinkContainer {
+  display: flex;
+  justify-content: center;
+}
