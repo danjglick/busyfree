@@ -7,7 +7,6 @@ class Settings extends Component {
   constructor(props) {
     super(props)
     this.state = {clickedHeading: ''}
-    this.user = JSON.parse(localStorage.user)
     this.handleClick = this.handleClick.bind(this)
   }
 
@@ -16,7 +15,7 @@ class Settings extends Component {
   }
 
   render() {
-    let homeUrl = `/users/${this.user.id}`
+    let homeUrl = `/users/${JSON.parse(localStorage.user).id}`
     return(
       <div>
         <p>

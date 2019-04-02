@@ -1,5 +1,9 @@
 TODO
 
+consider referencing localStorage.user directly
+instead of via instance variables
+that way it's always up-to-date
+
 deploy
 
 flexbox

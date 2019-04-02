@@ -6,7 +6,6 @@ class FriendsList extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      user: JSON.parse(localStorage.user),
       friends: [],
       friendToAdd: '',
       searchResults: [],
@@ -18,7 +17,7 @@ class FriendsList extends Component {
   }
 
   componentDidMount() {
-    fetch(`/api/v1/users/${this.state.user.id}`)
+    fetch(`/api/v1/users/${JSON.parse(localStorage.user).id}`)
       .then(response => response.json())
       .then(body => {
         this.setState({friends: body.friends})
@@ -31,7 +30,7 @@ class FriendsList extends Component {
 
   tick() {
     this.setState({user: JSON.parse(localStorage.user)})
-    if (this.state.user.id != 1) {
+    if (JSON.parse(localStorage.user).id != 1) {
       this.setState({signInMsg: ''})
     }
   }
@@ -58,7 +57,7 @@ class FriendsList extends Component {
 
   addFriend(e) {
     let friend = this.state.searchResults[e.target.id]
-    fetch(`/api/v1/users/${this.state.user.id}`, {
+    fetch(`/api/v1/users/${JSON.parse(localStorage.user).id}`, {
       method: 'PATCH',
       body: JSON.stringify({
         friendToAdd: friend
@@ -76,14 +75,14 @@ class FriendsList extends Component {
           searchResults: []
         })
       })
-    if (this.state.user.id == 1) {
+    if (JSON.parse(localStorage.user).id == 1) {
       let capitalizedFriendName = friend.name.charAt(0).toUpperCase() + friend.name.slice(1)
       this.setState({signInMsg: `sign-in to see if ${capitalizedFriendName} is free!`})
     }
   }
 
   removeFriend(e) {
-    fetch(`/api/v1/users/${this.state.user.id}`, {
+    fetch(`/api/v1/users/${JSON.parse(localStorage.user).id}`, {
       method: 'PATCH',
       body: JSON.stringify({
         friendToRemove: this.state.friends[e.target.id]
@@ -104,7 +103,7 @@ class FriendsList extends Component {
     let key = -1
     let friends = this.state.friends.map(friend => {
       key += 1
-      if (this.state.user.id != 1) {
+      if (JSON.parse(localStorage.user).id != 1) {
         return(
           <Friend
             key={key}

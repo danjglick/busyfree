@@ -7,7 +7,6 @@ class BusySwitch extends Component {
       busyOrFree: 'busy',
       connectedTo: ''
     }
-    this.user = JSON.parse(localStorage.user)
     this.notification = ''
     this.busyChecked = ''
     this.freeChecked = ''
@@ -22,10 +21,10 @@ class BusySwitch extends Component {
   }
 
   tick() {
-    fetch(`/api/v1/users/${this.user.id}`)
+    fetch(`/api/v1/users/${JSON.parse(localStorage.user).id}`)
       .then(response => response.json())
       .then(body => {
-        if (this.user.id != 1) {
+        if (JSON.parse(localStorage.user).id != 1) {
           this.setState({
             busyOrFree: body.busy_or_free,
             connectedTo: body.connected_to
@@ -35,7 +34,7 @@ class BusySwitch extends Component {
   }
 
   busySwitch() {
-    fetch(`/api/v1/users/${this.user.id}`, {
+    fetch(`/api/v1/users/${JSON.parse(localStorage.user).id}`, {
       method: 'PATCH',
       body: JSON.stringify({
         busyOrFree: this.state.busyOrFree
@@ -68,7 +67,10 @@ class BusySwitch extends Component {
       this.busyChecked = "noChecked"
       this.freeChecked = "yesChecked"
     }
-    if (this.user.id == 1 && this.state.busyOrFree == 'free') {
+    if (
+      JSON.parse(localStorage.user).id == 1
+      && this.state.busyOrFree == 'free'
+    ) {
       this.notification = "Sign-in to see who else is free!"
     }
     return(

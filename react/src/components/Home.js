@@ -2,8 +2,7 @@ import React from 'react'
 import BusySwitch from '../containers/BusySwitch'
 
 const Home = props => {
-  let user = JSON.parse(localStorage.user)
-  let settingsUrl = `/users/${user.id}/edit`
+  let settingsUrl = `/users/${JSON.parse(localStorage.user).id}/edit`
 
   return(
     <div>
