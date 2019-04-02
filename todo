@@ -1,8 +1,6 @@
 TODO
 
-consider referencing localStorage.user directly
-instead of via instance variables
-that way it's always up-to-date
+friendslist doesn't show up right away
 
 deploy
 

@@ -7,7 +7,6 @@ class BusySwitch extends Component {
       busyOrFree: 'busy',
       connectedTo: ''
     }
-    this.notification = ''
     this.busyChecked = ''
     this.freeChecked = ''
     this.busySwitch = this.busySwitch.bind(this)
@@ -31,6 +30,11 @@ class BusySwitch extends Component {
           })
         }
       })
+    if (this.state.connectedTo) {
+      this.props.notify(this.state.connectedTo)
+    } else if (JSON.parse(localStorage.user).id != 1) {
+      this.props.clearNotification()
+    }
   }
 
   busySwitch() {
@@ -51,15 +55,17 @@ class BusySwitch extends Component {
           busyOrFree: body.busy_or_free,
           connectedTo: body.connected_to
         })
+        if (JSON.parse(localStorage.user).id == 1) {
+          if (this.state.busyOrFree == 'free') {
+            this.props.promptGuest()
+          } else {
+            this.props.clearNotification()
+          }
+        }
       })
   }
 
   render() {
-    if (this.state.connectedTo) {
-      this.notification = " is free!"
-    } else {
-      this.notification = ""
-    }
     if (this.state.busyOrFree == "busy") {
       this.busyChecked = "yesChecked"
       this.freeChecked = "noChecked"
@@ -67,18 +73,8 @@ class BusySwitch extends Component {
       this.busyChecked = "noChecked"
       this.freeChecked = "yesChecked"
     }
-    if (
-      JSON.parse(localStorage.user).id == 1
-      && this.state.busyOrFree == 'free'
-    ) {
-      this.notification = "Sign-in to see who else is free!"
-    }
     return(
       <div>
-        <div id="notification">
-          {this.state.connectedTo}
-          {this.notification}
-        </div>
         <button
           className="busySwitch busy"
           id={this.busyChecked}
