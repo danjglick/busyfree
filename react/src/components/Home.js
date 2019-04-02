@@ -26,7 +26,12 @@ class Home extends Component {
     let settingsUrl = `/users/${JSON.parse(localStorage.user).id}/edit`
     return(
       <div className='flexContainer'>
-        <div className='notification'> {this.state.msg} </div>
+        <div
+          id='notification'
+          className="columnBlock"
+          >
+          {this.state.msg}
+        </div>
         <BusySwitch
           notify={this.notify}
           promptGuest={this.promptGuest}
@@ -34,6 +39,7 @@ class Home extends Component {
         />
         <a
           id="settingsLink"
+          className="columnBlock"
           href={settingsUrl}
           >
           settings

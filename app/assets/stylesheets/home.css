@@ -1,12 +1,19 @@
 .flexContainer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 25vh;
+}
+
+.columnBlock {
+  margin-top: 25vh;
 }
 
 .busySwitch {
   border-color: var(--main-dark);
   font-size: 2em;
+  margin-top: 25vh;
 }
 
 .busy {
