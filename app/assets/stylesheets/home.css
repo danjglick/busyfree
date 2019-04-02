@@ -3,28 +3,28 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 25vh;
 }
 
-.columnBlock {
+.columnEnd {
   margin-top: 25vh;
 }
 
 .busySwitch {
-  border-color: var(--main-dark);
-  font-size: 2em;
   margin-top: 25vh;
+  border-color: var(--main-dark);
+  font-size: 12vw;
 }
 
 .busy {
-  border-radius: 1em 0 0 1em;
+  border-radius: 6vw 0 0 6vw;
 }
 
 .free {
-  border-radius: 0 1em 1em 0;
+  border-radius: 0 6vw 6vw 0;
 }
 
 #notification {
+  text-align: center;
   color: var(--main-yellow);
   -webkit-text-stroke: 1px var(--main-dark);
   font-size: 2em;

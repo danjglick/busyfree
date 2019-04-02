@@ -62,7 +62,8 @@ class SignInForm extends Component {
             value={this.state.password}
             onChange={this.handlePasswordChange}
           />
-        </label> <br />
+        </label>
+        <br />
         <input type="submit" value="sign-in" />
       </form>
     )

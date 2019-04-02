@@ -18,7 +18,7 @@
 
 :root {
   --main-blue: #ADDFFF;
-  --main-yellow: #FFDF00; /* --main-yellow: #F8D45A; */
+  --main-yellow: #FFDF00;
   --main-dark: #282828;
   --main-light: #E4E8ED;
 }
@@ -28,12 +28,14 @@ body, html {
   font-family: 'Roboto', sans-serif;
   color: var(--main-dark);
   font-weight: bold;
+  font-size: 6vw;
 }
 
 input, button {
   background-color: var(--main-light);
   font-weight: bold;
   outline: none;
+  font-size: 1em;
 }
 
 a {

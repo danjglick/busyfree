@@ -80,14 +80,14 @@ class BusySwitch extends Component {
           id={this.busyChecked}
           onClick={this.busySwitch}
           >
-          busy
+          &nbsp;busy&nbsp;
         </button>
         <button
           className="busySwitch free"
           id={this.freeChecked}
           onClick={this.busySwitch}
           >
-          free
+          &nbsp;free&nbsp;
         </button>
       </div>
     )
