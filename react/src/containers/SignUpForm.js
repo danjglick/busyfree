@@ -50,14 +50,18 @@ class SignUpForm extends Component {
         className='settingsContent'
         onSubmit={this.handleSubmit}
       >
-        <label> name <input
+        <label>
+          <input
+            placeholder='name (first and last)'
             type="text"
             value={this.state.name}
             onChange={this.handleNameChange}
           />
         </label>
         <br />
-        <label> password <input
+        <label>
+          <input
+            placeholder='password'
             type="text"
             value={this.state.password}
             onChange={this.handlePasswordChange}

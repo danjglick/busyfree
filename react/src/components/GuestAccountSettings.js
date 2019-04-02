@@ -6,12 +6,10 @@ const GuestAccountSettings = props => {
   return(
     <div className='settingsContent'>
       <br />
-      <div className='settingsHeading'> sign-up </div>
-      <br />
+      <div> sign-up </div>
       <SignUpForm />
       <br />
-      <div className='settingsHeading'> sign-in </div>
-      <br />
+      <div> sign-in </div>
       <SignInForm />
     </div>
   )
