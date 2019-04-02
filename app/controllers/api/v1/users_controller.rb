@@ -12,14 +12,14 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  def index
+    render json: User.all
+  end
+
   def show
     user = User.find(params[:id])
     user.get_connections
     render json: user
-  end
-
-  def index
-    render json: User.all
   end
 
   def update
