@@ -7,8 +7,9 @@ class Api::V1::UsersController < ApplicationController
       name: params[:name],
       password: params[:password]
     )
-    user.save
-    render json: user
+    if user.save
+      render json: user
+    end
   end
 
   def show

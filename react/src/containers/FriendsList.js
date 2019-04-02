@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import Friend from '../components/friend'
+import SearchResult from '../components/searchresult'
 
 class FriendsList extends Component {
   constructor(props) {
@@ -95,16 +97,12 @@ class FriendsList extends Component {
       key += 1
       if (this.state.user.id != 1) {
         return(
-          <span key={key}>
-            {friend.name}
-            <button
-              id={key}
-              onClick={this.removeFriend}
-              className="removeFriendButton"
-              > X
-            </button>
-            <br />
-          </span>
+          <Friend
+            key={key}
+            id={key}
+            removeFriend={this.removeFriend}
+            friendName={friend.name}
+          />
         )
       }
     })
@@ -112,14 +110,12 @@ class FriendsList extends Component {
     let searchResults = this.state.searchResults.map(searchResult => {
       key += 1
       return(
-        <div key={key}>
-          <button
-            id={key}
-            className='searchResult'
-            onClick={this.addFriend}
-            > {searchResult.name}
-          </button>
-        </div>
+        <SearchResult
+          key={key}
+          id={key}
+          addFriend={this.addFriend}
+          searchResultName={searchResult.name}
+        />
       )
     })
     if (this.props.clickedHeading != "Friends") {
