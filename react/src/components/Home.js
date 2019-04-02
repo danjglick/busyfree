@@ -2,9 +2,8 @@ import React from 'react'
 import BusySwitch from '../containers/BusySwitch'
 
 const Home = props => {
-  let urlSplit = window.location.href.split('/')
-  let userId = urlSplit[urlSplit.length - 1]
-  let settingsUrl = `/users/${userId}/edit`
+  let user = JSON.parse(localStorage.user)
+  let settingsUrl = `/users/${user.id}/edit`
 
   return(
     <div>
@@ -12,7 +11,8 @@ const Home = props => {
       <a
         id="settingsLink"
         href={settingsUrl}
-        > settings
+        >
+        settings
       </a>
     </div>
   )

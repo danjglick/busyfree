@@ -1,47 +1,52 @@
 import React, {Component} from 'react'
-import FriendsList from './FriendsList'
-import AccountSettings from '../components/AccountSettings'
-import About from '../components/About'
+import FriendsList from './friendslist'
+import AccountSettings from './accountsettings'
+import About from '../components/about'
 
 class Settings extends Component {
   constructor(props) {
     super(props)
     this.state = {clickedHeading: ''}
+    this.user = JSON.parse(localStorage.user)
     this.handleClick = this.handleClick.bind(this)
   }
 
-  handleClick(event) {
-    this.setState({clickedHeading: event.target.value})
+  handleClick(e) {
+    this.setState({clickedHeading: e.target.value})
   }
 
   render() {
-    let urlSplit = window.location.href.split('/')
-    let userId = urlSplit[urlSplit.length - 2]
-    let homeUrl = `/users/${userId}`
+    let homeUrl = `/users/${this.user.id}`
     return(
-      <div> <br />
-        <a href={homeUrl}> back </a> <br />
+      <div>
+        <p>
+          <a href={homeUrl}> back </a>
+        </p>
         <button
           className="settingsHeading"
           onClick={this.handleClick}
           value="Friends"
-          > friends
+          >
+          friends
         </button>
-        <FriendsList clickedHeading={this.state.clickedHeading} /> <br />
-          <button
+        <FriendsList clickedHeading={this.state.clickedHeading} />
+        <br />
+        <button
           className="settingsHeading"
           onClick={this.handleClick}
           value="Account"
           > account
         </button>
-        <AccountSettings clickedHeading={this.state.clickedHeading} /> <br />
+        <AccountSettings clickedHeading={this.state.clickedHeading} />
+        <br />
         <button
           className="settingsHeading"
           onClick={this.handleClick}
           value="About"
           > about
         </button>
-        <About clickedHeading={this.state.clickedHeading}/> <br />
+        <About clickedHeading={this.state.clickedHeading} />
+        <br />
       </div>
     )
   }

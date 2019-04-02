@@ -40,14 +40,16 @@ class User < ApplicationRecord
   end
 
   def add_friend(params)
-    for i in User.all
-      in_db = (i.id == params[:friendToAdd][:id])
-      not_self = (i.id != self.id)
-      not_friend = (!self.friends.any? {|friend|
-        i.id == friend['id']
-      })
-      if in_db && not_self && not_friend
-        self.friends << ({name: i.name, id: i.id})
+    if self.id != 1
+      for i in User.all
+        in_db = (i.id == params[:friendToAdd][:id])
+        not_self = (i.id != self.id)
+        not_friend = (!self.friends.any? {|friend|
+          i.id == friend['id']
+        })
+        if in_db && not_self && not_friend
+          self.friends << ({name: i.name, id: i.id})
+        end
       end
     end
   end

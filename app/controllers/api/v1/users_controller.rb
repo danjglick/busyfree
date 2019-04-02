@@ -1,6 +1,16 @@
 class Api::V1::UsersController < ApplicationController
   protect_from_forgery unless: -> {request.format.json?}
 
+  def create
+    user = User.new(
+      id: User.maximum(:id).next,
+      name: params[:name],
+      password: params[:password]
+    )
+    user.save
+    render json: user
+  end
+
   def show
     user = User.find(params[:id])
     user.get_connections

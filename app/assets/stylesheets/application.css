@@ -38,6 +38,7 @@ input, button {
 
 a {
   color: var(--main-dark);
+  text-decoration: underline;
 }
 
 .fas {

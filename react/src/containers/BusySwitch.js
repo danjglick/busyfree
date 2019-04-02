@@ -7,15 +7,11 @@ class BusySwitch extends Component {
       busyOrFree: 'busy',
       connectedTo: ''
     }
+    this.user = JSON.parse(localStorage.user)
     this.notification = ''
     this.busyChecked = ''
     this.freeChecked = ''
     this.busySwitch = this.busySwitch.bind(this)
-  }
-
-  getUserId() {
-    let urlSplit = window.location.href.split('/')
-    return urlSplit[urlSplit.length - 1]
   }
 
   componentDidMount() {
@@ -26,23 +22,28 @@ class BusySwitch extends Component {
   }
 
   tick() {
-    fetch(`/api/v1/users/${this.getUserId()}`)
-    .then(response => response.json())
-    .then(body => {
-      if(this.getUserId() != 1) {
-        this.setState({
-          busyOrFree: body.busy_or_free,
-          connectedTo: body.connected_to
-        })
-      }
-    })
+    fetch(`/api/v1/users/${this.user.id}`)
+      .then(response => response.json())
+      .then(body => {
+        if (this.user.id != 1) {
+          this.setState({
+            busyOrFree: body.busy_or_free,
+            connectedTo: body.connected_to
+          })
+        }
+      })
   }
 
   busySwitch() {
-    fetch(`/api/v1/users/${this.getUserId()}`, {
+    fetch(`/api/v1/users/${this.user.id}`, {
       method: 'PATCH',
-      body: JSON.stringify({busyOrFree: this.state.busyOrFree}),
-      headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        busyOrFree: this.state.busyOrFree
+      }),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
       credentials: 'same-origin'
     })
     .then(response => response.json())
@@ -67,7 +68,7 @@ class BusySwitch extends Component {
       this.busyChecked = "noChecked"
       this.freeChecked = "yesChecked"
     }
-    if(this.getUserId() == 1 && this.state.busyOrFree == 'free') {
+    if(this.user.id == 1 && this.state.busyOrFree == 'free') {
       this.notification = "Sign-in to see who else is free!"
     }
     return(
@@ -80,13 +81,15 @@ class BusySwitch extends Component {
           className="busySwitch busy"
           id={this.busyChecked}
           onClick={this.busySwitch}
-          > busy
+          >
+          busy
         </button>
         <button
           className="busySwitch free"
           id={this.freeChecked}
           onClick={this.busySwitch}
-          > free
+          >
+          free
         </button>
       </div>
     )

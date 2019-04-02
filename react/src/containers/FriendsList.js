@@ -4,6 +4,7 @@ class FriendsList extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      user: JSON.parse(localStorage.user),
       friends: [],
       friendToAdd: '',
       searchResults: []
@@ -13,62 +14,72 @@ class FriendsList extends Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
-  getUserId() {
-    let splitUrl = window.location.href.split('/')
-    return splitUrl[splitUrl.length - 2]
-  }
-
   componentDidMount() {
-    fetch(`/api/v1/users/${this.getUserId()}`)
+    fetch(`/api/v1/users/${this.state.user.id}`)
+      .then(response => response.json())
+      .then(body => {
+        this.setState({friends: body.friends})
+      })
+    this.timerId = setInterval(
+      () => this.tick(),
+      1
+    )
+  }
+
+  tick() {
+    this.setState({user: JSON.parse(localStorage.user)})
+  }
+
+  addFriend(e) {
+    fetch(`/api/v1/users/${this.state.user.id}`, {
+      method: 'PATCH',
+      body: JSON.stringify({
+        friendToAdd: this.state.searchResults[e.target.id]
+      }),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      credentials: 'same-origin'
+    })
+      .then(response => response.json())
+      .then(body => {
+        this.setState({
+          friends: body.friends,
+          searchResults: []
+        })
+      })
+  }
+
+  removeFriend(e) {
+    fetch(`/api/v1/users/${this.state.user.id}`, {
+      method: 'PATCH',
+      body: JSON.stringify({
+        friendToRemove: this.state.friends[e.target.id]
+      }),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      credentials: 'same-origin'
+    })
     .then(response => response.json())
     .then(body => {
       this.setState({friends: body.friends})
     })
   }
 
-  addFriend(event) {
-    fetch(`/api/v1/users/${this.getUserId()}`, {
-      method: 'PATCH',
-      body: JSON.stringify(
-        {friendToAdd: this.state.searchResults[event.target.id]}
-      ),
-      headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
-      credentials: 'same-origin'
-    })
-    .then(response => response.json())
-    .then(body => {
-      this.setState(
-        {friends: body.friends, searchResults: []}
-      )
-    })
-  }
-
-  removeFriend(event) {
-    fetch(`/api/v1/users/${this.getUserId()}`, {
-      method: 'PATCH',
-      body: JSON.stringify(
-        {friendToRemove: this.state.friends[event.target.id]}
-      ),
-      headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
-      credentials: 'same-origin'
-    })
-    .then(response => response.json())
-    .then(body => {
-      this.setState({friends: body.friends})
-    })
-  }
-
-  handleChange(event) {
-    event.persist()
-    this.setState({friendToAdd: event.target.value})
+  handleChange(e) {
+    e.persist()
+    this.setState({friendToAdd: e.target.value})
     fetch(`/api/v1/users`)
     .then(response => response.json())
     .then(body => {
       let newSearchResults = []
       let areSearchResultsPresent = false
-      if (event.target.value.length > 2) {
+      if (e.target.value.length > 2) {
         for (let i=0; i<body.length; i++) {
-          if (body[i].name.slice(0, event.target.value.length).toUpperCase() == event.target.value.toUpperCase()) {
+          if (body[i].name.slice(0, e.target.value.length).toUpperCase() == e.target.value.toUpperCase()) {
             newSearchResults.push({name: body[i].name, id: body[i].id})
             areSearchResultsPresent = true
           }
@@ -82,9 +93,9 @@ class FriendsList extends Component {
     let key = -1
     let friends = this.state.friends.map(friend => {
       key += 1
-      if (!(this.getUserId() == 1)) {
+      if (this.state.user.id != 1) {
         return(
-          <div key={key}>
+          <span key={key}>
             {friend.name}
             <button
               id={key}
@@ -92,7 +103,8 @@ class FriendsList extends Component {
               className="removeFriendButton"
               > X
             </button>
-          </div>
+            <br />
+          </span>
         )
       }
     })
