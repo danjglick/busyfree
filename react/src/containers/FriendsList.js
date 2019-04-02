@@ -34,10 +34,11 @@ class FriendsList extends Component {
   }
 
   addFriend(e) {
+    let friend = this.state.searchResults[e.target.id]
     fetch(`/api/v1/users/${this.state.user.id}`, {
       method: 'PATCH',
       body: JSON.stringify({
-        friendToAdd: this.state.searchResults[e.target.id]
+        friendToAdd: friend
       }),
       headers: {
         'Accept': 'application/json',
@@ -53,7 +54,7 @@ class FriendsList extends Component {
         })
       })
     if (this.state.user.id == 1) {
-      let capitalizedFriendName = (this.state.friendToAdd).charAt(0).toUpperCase() + (this.state.friendToAdd).slice(1)
+      let capitalizedFriendName = friend.name.charAt(0).toUpperCase() + friend.name.slice(1)
       this.setState({signInMsg: `sign-in to see if ${capitalizedFriendName} is free!`})
     }
   }
