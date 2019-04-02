@@ -46,29 +46,29 @@ class BusySwitch extends Component {
       },
       credentials: 'same-origin'
     })
-    .then(response => response.json())
-    .then(body => {
-      this.setState({
-        busyOrFree: body.busy_or_free,
-        connectedTo: body.connected_to
+      .then(response => response.json())
+      .then(body => {
+        this.setState({
+          busyOrFree: body.busy_or_free,
+          connectedTo: body.connected_to
+        })
       })
-    })
   }
 
   render() {
-    if(this.state.connectedTo) {
+    if (this.state.connectedTo) {
       this.notification = " is free!"
     } else {
       this.notification = ""
     }
-    if(this.state.busyOrFree == "busy") {
+    if (this.state.busyOrFree == "busy") {
       this.busyChecked = "yesChecked"
       this.freeChecked = "noChecked"
     } else {
       this.busyChecked = "noChecked"
       this.freeChecked = "yesChecked"
     }
-    if(this.user.id == 1 && this.state.busyOrFree == 'free') {
+    if (this.user.id == 1 && this.state.busyOrFree == 'free') {
       this.notification = "Sign-in to see who else is free!"
     }
     return(

@@ -31,6 +31,29 @@ class FriendsList extends Component {
 
   tick() {
     this.setState({user: JSON.parse(localStorage.user)})
+    if (this.state.user.id != 1) {
+      this.setState({signInMsg: ''})
+    }
+  }
+
+  handleChange(e) {
+    e.persist()
+    this.setState({friendToAdd: e.target.value})
+    fetch(`/api/v1/users`)
+    .then(response => response.json())
+    .then(body => {
+      let newSearchResults = []
+      let areSearchResultsPresent = false
+      if (e.target.value.length > 2) {
+        for (let i=0; i<body.length; i++) {
+          if (body[i].name.slice(0, e.target.value.length).toUpperCase() == e.target.value.toUpperCase()) {
+            newSearchResults.push({name: body[i].name, id: body[i].id})
+            areSearchResultsPresent = true
+          }
+        }
+      }
+      this.setState({searchResults: newSearchResults})
+    })
   }
 
   addFriend(e) {
@@ -74,26 +97,6 @@ class FriendsList extends Component {
     .then(response => response.json())
     .then(body => {
       this.setState({friends: body.friends})
-    })
-  }
-
-  handleChange(e) {
-    e.persist()
-    this.setState({friendToAdd: e.target.value})
-    fetch(`/api/v1/users`)
-    .then(response => response.json())
-    .then(body => {
-      let newSearchResults = []
-      let areSearchResultsPresent = false
-      if (e.target.value.length > 2) {
-        for (let i=0; i<body.length; i++) {
-          if (body[i].name.slice(0, e.target.value.length).toUpperCase() == e.target.value.toUpperCase()) {
-            newSearchResults.push({name: body[i].name, id: body[i].id})
-            areSearchResultsPresent = true
-          }
-        }
-      }
-      this.setState({searchResults: newSearchResults})
     })
   }
 
