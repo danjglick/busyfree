@@ -12,16 +12,16 @@ class SignUpForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleNameChange(event) {
-    this.setState({name: event.target.value})
+  handleNameChange(e) {
+    this.setState({name: e.target.value})
   }
 
-  handlePasswordChange(event) {
-    this.setState({password: event.target.value})
+  handlePasswordChange(e) {
+    this.setState({password: e.target.value})
   }
 
-  handleSubmit(event) {
-    event.preventDefault()
+  handleSubmit(e) {
+    e.preventDefault()
     fetch('/api/v1/users', {
       method: 'POST',
       body: JSON.stringify({
@@ -34,13 +34,13 @@ class SignUpForm extends Component {
       },
       credentials: 'same-origin'
     })
-    .then(response => response.json())
-    .then(body => {
-      localStorage.setItem('user', JSON.stringify(body))
-      this.setState({
-        name: '',
-        password: ''
+      .then(response => response.json())
+      .then(body => {
+        localStorage.setItem('user', JSON.stringify(body))
       })
+    this.setState({
+      name: '',
+      password: ''
     })
   }
 
