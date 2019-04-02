@@ -9,7 +9,8 @@ class FriendsList extends Component {
       user: JSON.parse(localStorage.user),
       friends: [],
       friendToAdd: '',
-      searchResults: []
+      searchResults: [],
+      signInMsg: ''
     }
     this.addFriend = this.addFriend.bind(this)
     this.removeFriend = this.removeFriend.bind(this)
@@ -51,6 +52,10 @@ class FriendsList extends Component {
           searchResults: []
         })
       })
+    if (this.state.user.id == 1) {
+      let capitalizedFriendName = (this.state.friendToAdd).charAt(0).toUpperCase() + (this.state.friendToAdd).slice(1)
+      this.setState({signInMsg: `sign-in to see if ${capitalizedFriendName} is free!`})
+    }
   }
 
   removeFriend(e) {
@@ -123,6 +128,7 @@ class FriendsList extends Component {
     }
     return (
       <div className="settingsContent">
+        <p> {this.state.signInMsg} </p>
         <p> {friends} </p>
         <form onSubmit={this.addFriend}>
           <label>
