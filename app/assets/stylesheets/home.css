@@ -26,7 +26,7 @@
 #notification {
   text-align: center;
   color: var(--main-yellow);
-  -webkit-text-stroke: 1px var(--main-dark);
+  -webkit-text-stroke: .025em var(--main-dark);
   font-size: 2em;
   font-weight: bold;
 }

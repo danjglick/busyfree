@@ -36,14 +36,10 @@ input, button {
   font-weight: bold;
   outline: none;
   font-size: 1em;
+  margin-top: 1vh;
 }
 
 a {
   color: var(--main-dark);
   text-decoration: underline;
-}
-
-.fas {
-  color: var(--main-dark);
-  font-size: 1.5em;
 }
