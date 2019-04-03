@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import GuestAccountSettings from '../components/GuestAccountSettings'
-import UserAccountSettings from '../components/UserAccountSettings'
+import GuestAccountSettings from '../components/guestaccountsettings'
+import UserAccountSettings from '../components/useraccountsettings'
 
 class AccountSettings extends Component {
   constructor(props) {

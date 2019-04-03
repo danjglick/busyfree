@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Home from './components/home'
+import Home from './containers/home'
 import Settings from './containers/settings'
 
 document.addEventListener('DOMContentLoaded', () => {

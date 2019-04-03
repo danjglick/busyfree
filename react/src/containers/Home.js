@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import BusySwitch from '../containers/BusySwitch'
+import BusySwitch from './busyswitch'
 
 class Home extends Component {
   constructor(props) {
