@@ -28,7 +28,7 @@ body, html {
   font-family: 'Roboto', sans-serif;
   color: var(--main-dark);
   font-weight: bold;
-  font-size: 6vw;
+  font-size: 5vw;
 }
 
 input, button {

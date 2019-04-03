@@ -6,21 +6,21 @@
 }
 
 .columnEnd {
-  margin-top: 25vh;
+  margin-top: 20vh;
 }
 
 .busySwitch {
-  margin-top: 25vh;
+  margin-top: 20vh;
   border-color: var(--main-dark);
-  font-size: 12vw;
+  font-size: 10vw;
 }
 
 .busy {
-  border-radius: 6vw 0 0 6vw;
+  border-radius: 5vw 0 0 5vw;
 }
 
 .free {
-  border-radius: 0 6vw 6vw 0;
+  border-radius: 0 5vw 5vw 0;
 }
 
 #notification {
