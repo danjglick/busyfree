@@ -1,25 +1,25 @@
-.searchResult {
-  background-color: var(--main-blue);
-  border: none;
-  font-size: 1em;
-}
-
 .settingsHeading {
+  font-size: 2em;
   background-color: var(--main-blue);
   border: none;
-  font-size: 2em;
 }
 
 .settingsContent {
   padding-left: 2em;
 }
 
+.searchResult {
+  font-size: 1em;
+  background-color: var(--main-blue);
+  border: none;
+}
+
 .removeFriendButton {
+  font-size: 1em;
   background-color: var(--main-blue);
   border-color: var(--main-blue);
   color: var(--main-dark);
   -webkit-text-stroke: .025em var(--main-light);
-  font-size: 1em;
 }
 
 #backLinkContainer {

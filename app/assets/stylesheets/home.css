@@ -5,29 +5,29 @@
   align-items: center;
 }
 
-.columnEnd {
+.flexColumnEnds {
   margin-top: 20vh;
 }
 
 .busySwitch {
   margin-top: 20vh;
+  font-size: 2em;
   border-color: var(--main-dark);
-  font-size: 10vw;
 }
 
 .busy {
-  border-radius: 5vw 0 0 5vw;
+  border-radius: 1em 0 0 1em;
 }
 
 .free {
-  border-radius: 0 5vw 5vw 0;
+  border-radius: 0 1em 1em 0;
 }
 
 #notification {
   text-align: center;
+  font-size: 2em;
   color: var(--main-yellow);
   -webkit-text-stroke: .025em var(--main-dark);
-  font-size: 2em;
   font-weight: bold;
 }
 

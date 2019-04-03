@@ -28,7 +28,7 @@ class Home extends Component {
       <div className='flexContainer'>
         <div
           id='notification'
-          className="columnEnd"
+          className="flexColumnEnds"
           >
           {this.state.msg}
         </div>
@@ -39,7 +39,7 @@ class Home extends Component {
         />
         <a
           id="settingsLink"
-          className="columnEnd"
+          className="flexColumnEnds"
           href={settingsUrl}
           >
           settings

@@ -23,20 +23,20 @@
   --main-light: #E4E8ED;
 }
 
-body, html {
+html {
+  font-size: 5vw;
   background-color: var(--main-blue);
   font-family: 'Roboto', sans-serif;
   color: var(--main-dark);
   font-weight: bold;
-  font-size: 5vw;
 }
 
 input, button {
+  margin-top: 1vh;
+  font-size: 1em;
   background-color: var(--main-light);
   font-weight: bold;
   outline: none;
-  font-size: 1em;
-  margin-top: 1vh;
 }
 
 a {
