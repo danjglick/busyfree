@@ -9,14 +9,11 @@ class User < ApplicationRecord
       your_friends_ids = you.friends.map {|friend| friend['id']}
       both_free = (self.busy_or_free == "free" && you.busy_or_free == "free")
       both_friends = (my_friends_ids.include?(you.id) && your_friends_ids.include?(self.id))
-      currently_connected = (self.connected_to == you.name || you.connected_to == self.name)
-      recently_connected = (self.just_connected == you.name || you.just_connected == self.name)
-      if (both_free || currently_connected) && both_friends && !recently_connected
+      both_connected_to_noone = (self.connected_to == '' && you.connected_to = '')
+      both_connected_to_eachother = (self.connected_to == you.name && you.connected_to == self.name)
+      if (you != self) && (both_free && both_friends) && (both_connected_to_noone || both_connected_to_eachother)
         is_connected = true
-        self.update({
-          connected_to: you.name,
-          busy_or_free: 'busy'
-        })
+        self.connected_to = you.name
       end
     end
     if is_connected == false
