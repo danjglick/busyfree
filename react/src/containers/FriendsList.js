@@ -6,6 +6,7 @@ class FriendsList extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      user: {},
       friends: [],
       friendToAdd: '',
       searchResults: [],
@@ -17,22 +18,24 @@ class FriendsList extends Component {
   }
 
   componentDidMount() {
-    fetch(`/api/v1/users/${JSON.parse(localStorage.user).id}`)
-      .then(response => response.json())
-      .then(body => {
-        this.setState({friends: body.friends})
-      })
     this.timerId = setInterval(
       () => this.tick(),
-      1
+      1000
     )
   }
 
   tick() {
-    this.setState({user: JSON.parse(localStorage.user)})
-    if (JSON.parse(localStorage.user).id != 1) {
-      this.setState({signInMsg: ''})
+    if (this.state.user != JSON.parse(localStorage.user)) {
+      fetch(`/api/v1/users/${JSON.parse(localStorage.user).id}`)
+        .then(response => response.json())
+        .then(body => {
+          this.setState({friends: body.friends})
+          if (JSON.parse(localStorage.user).id != 1) {
+            this.setState({signInMsg: ''})
+          }
+        })
     }
+    this.setState({user: JSON.parse(localStorage.user)})
   }
 
   handleChange(e) {
