@@ -28,7 +28,6 @@ class User < ApplicationRecord
         connected_to: ''
       })
     elsif params[:busyOrFree] == "busy"
-      self.just_connected = self.connected_to
       self.update({
         busy_or_free: "free",
         connected_to: ''

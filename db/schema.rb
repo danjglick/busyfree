@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2019_02_25_152149) do
     t.json "friends", default: [], array: true
     t.string "busy_or_free", default: "busy"
     t.string "connected_to", default: ""
-    t.string "just_connected", default: ""
   end
 
 end
