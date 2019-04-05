@@ -23,10 +23,10 @@
   --main-light: #E4E8ED;
 }
 
-html {
+* {
+  font-family: 'Roboto', sans-serif; 
   font-size: 2.5vh;
   background-color: var(--main-blue);
-  font-family: 'Roboto', sans-serif;
   color: var(--main-dark);
   font-weight: bold;
 }
