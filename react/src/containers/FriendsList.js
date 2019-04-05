@@ -137,14 +137,12 @@ class FriendsList extends Component {
         <p> {this.state.signInMsg} </p>
         <p> {friends} </p>
         <form onSubmit={this.addFriend}>
-          <label>
-            <input
-              type="text"
-              placeholder="search for your friends!"
-              value={this.state.friendToAdd}
-              onChange={this.handleChange}
-            />
-          </label>
+          <input
+            type="text"
+            placeholder="search for your friends!"
+            value={this.state.friendToAdd}
+            onChange={this.handleChange}
+          />
         </form>
         {searchResults}
       </div>
