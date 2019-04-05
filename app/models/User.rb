@@ -11,7 +11,7 @@ class User < ApplicationRecord
       both_friends = (my_friends_ids.include?(you.id) && your_friends_ids.include?(self.id))
       both_connected_to_noone = (self.connected_to == '' && you.connected_to = '')
       both_connected_to_eachother = (self.connected_to == you.name && you.connected_to == self.name)
-      if (you != self) && (both_free && both_friends) && (both_connected_to_noone || both_connected_to_eachother)
+      if you != self && both_free && both_friends && (both_connected_to_noone || both_connected_to_eachother)
         is_connected = true
         self.connected_to = you.name
       end
