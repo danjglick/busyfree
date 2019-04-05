@@ -25,23 +25,23 @@ class AccountSettings extends Component {
   signOut(e) {
     e.preventDefault()
     fetch('/api/v1/users/1')
-      .then(response => response.json())
-      .then(body => {
-        this.setState({isSignedIn: false})
-        localStorage.setItem('user', JSON.stringify(body))
-      })
-    // let userId = JSON.parse(localStorage.user).id
-    // fetch(`/api/v1/users/${userId}`, {
-    //   method: 'PATCH',
-    //   body: JSON.stringify({
-    //     busyOrFree: 'free'
-    //   }),
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json'
-    //   },
-    //   credentials: 'same-origin'
-    // })
+    .then(response => response.json())
+    .then(body => {
+      this.setState({isSignedIn: false})
+      localStorage.setItem('user', JSON.stringify(body))
+    })
+    let userId = JSON.parse(localStorage.user).id
+    fetch(`/api/v1/users/${userId}`, {
+      method: 'PATCH',
+      body: JSON.stringify({
+        busyOrFree: 'free'
+      }),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      credentials: 'same-origin'
+    })
   }
 
   render() {

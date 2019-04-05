@@ -1,8 +1,11 @@
 {
-  "name": "busyfreeapp",
+  "name": "busyfree",
   "version": "1.0.0",
   "description": "",
   "main": "webpack.config.js",
+  "engines": {
+    "node": "6.17"
+  },
   "scripts": {
     "heroku-postbuild": "NODE_ENV=production npm run webpack -- -p",
     "test": "node_modules/.bin/karma start react/karma.conf.js",
