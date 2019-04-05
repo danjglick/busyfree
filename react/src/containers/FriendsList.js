@@ -12,9 +12,9 @@ class FriendsList extends Component {
       friendToAdd: '',
       searchResults: []
     }
+    this.handleChange = this.handleChange.bind(this)
     this.addFriend = this.addFriend.bind(this)
     this.removeFriend = this.removeFriend.bind(this)
-    this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidMount() {
