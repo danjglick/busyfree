@@ -20,20 +20,20 @@ class BusySwitch extends Component {
   }
 
   tick() {
-    fetch(`/api/v1/users/${JSON.parse(localStorage.user).id}`)
-    .then(response => response.json())
-    .then(body => {
-      if (JSON.parse(localStorage.user).id != 1) {
+    if (JSON.parse(localStorage.user).id != 1) {
+      fetch(`/api/v1/users/${JSON.parse(localStorage.user).id}`)
+      .then(response => response.json())
+      .then(body => {
         this.setState({
           busyOrFree: body.busy_or_free,
           connectedTo: body.connected_to
         })
+      })
+      if (this.state.connectedTo) {
+        this.props.notifyUser(this.state.connectedTo)
+      } else {
+        this.props.clearNotification()
       }
-    })
-    if (this.state.connectedTo) {
-      this.props.notify(this.state.connectedTo)
-    } else if (JSON.parse(localStorage.user).id != 1) {
-      this.props.clearNotification()
     }
   }
 

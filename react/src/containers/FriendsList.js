@@ -6,11 +6,11 @@ class FriendsList extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      signInMsg: '',
       user: {},
       friends: [],
       friendToAdd: '',
-      searchResults: [],
-      signInMsg: ''
+      searchResults: []
     }
     this.addFriend = this.addFriend.bind(this)
     this.removeFriend = this.removeFriend.bind(this)

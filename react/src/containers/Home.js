@@ -6,7 +6,7 @@ class Home extends Component {
     super(props)
     this.state = {msg: ''}
     this.promptGuest = this.promptGuest.bind(this)
-    this.notify = this.notify.bind(this)
+    this.notifyUser = this.notifyUser.bind(this)
     this.clearNotification = this.clearNotification.bind(this)
   }
 
@@ -14,7 +14,7 @@ class Home extends Component {
     this.setState({msg: 'sign-in to see who else is free!'})
   }
 
-  notify(friend) {
+  notifyUser(friend) {
     this.setState({msg: `${friend} is free!`})
   }
 
@@ -33,8 +33,8 @@ class Home extends Component {
           {this.state.msg}
         </div>
         <BusySwitch
-          notify={this.notify}
           promptGuest={this.promptGuest}
+          notifyUser={this.notifyUser}
           clearNotification={this.clearNotification}
         />
         <a

@@ -23,21 +23,21 @@ class SignInForm extends Component {
   handleSubmit(e) {
     e.preventDefault()
     fetch('/api/v1/users')
-      .then(response => response.json())
-      .then(body => {
-        for (let i=0; i<body.length; i++) {
-          if (
-            body[i].name.toUpperCase() == this.state.name.toUpperCase()
-            && body[i].password == this.state.password
-          ) {
-            localStorage.setItem('user', JSON.stringify(body[i]))
-          }
+    .then(response => response.json())
+    .then(body => {
+      for (let i=0; i<body.length; i++) {
+        if (
+          body[i].name.toUpperCase() == this.state.name.toUpperCase()
+          && body[i].password == this.state.password
+        ) {
+          localStorage.setItem('user', JSON.stringify(body[i]))
         }
-        this.setState({
-          name: '',
-          password: ''
-        })
+      }
+      this.setState({
+        name: '',
+        password: ''
       })
+    })
   }
 
   render() {
@@ -46,23 +46,19 @@ class SignInForm extends Component {
         className='settingsContent'
         onSubmit={this.handleSubmit}
       >
-        <label>
-          <input
-            placeholder='name (first and last)'
-            type="text"
-            value={this.state.name}
-            onChange={this.handleNameChange}
-          />
-        </label>
+        <input
+          placeholder='name (first and last)'
+          type="text"
+          value={this.state.name}
+          onChange={this.handleNameChange}
+        />
         <br />
-        <label>
-          <input
-            placeholder='password'
-            type="text"
-            value={this.state.password}
-            onChange={this.handlePasswordChange}
-          />
-        </label>
+        <input
+          placeholder='password'
+          type="text"
+          value={this.state.password}
+          onChange={this.handlePasswordChange}
+        />
         <br />
         <input type="submit" value="sign-in" />
       </form>
