@@ -27,13 +27,13 @@ class FriendsList extends Component {
   tick() {
     if (this.state.user != JSON.parse(localStorage.user)) {
       fetch(`/api/v1/users/${JSON.parse(localStorage.user).id}`)
-        .then(response => response.json())
-        .then(body => {
-          this.setState({friends: body.friends})
-          if (JSON.parse(localStorage.user).id != 1) {
-            this.setState({signInMsg: ''})
-          }
-        })
+      .then(response => response.json())
+      .then(body => {
+        this.setState({friends: body.friends})
+        if (JSON.parse(localStorage.user).id != 1) {
+          this.setState({signInMsg: ''})
+        }
+      })
     }
     this.setState({user: JSON.parse(localStorage.user)})
   }
@@ -71,13 +71,13 @@ class FriendsList extends Component {
       },
       credentials: 'same-origin'
     })
-      .then(response => response.json())
-      .then(body => {
-        this.setState({
-          friends: body.friends,
-          searchResults: []
-        })
+    .then(response => response.json())
+    .then(body => {
+      this.setState({
+        friends: body.friends,
+        searchResults: []
       })
+    })
     if (JSON.parse(localStorage.user).id == 1) {
       let capitalizedFriendName = friend.name.charAt(0).toUpperCase() + friend.name.slice(1)
       this.setState({signInMsg: `sign-in to see if ${capitalizedFriendName} is free!`})

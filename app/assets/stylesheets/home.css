@@ -6,28 +6,29 @@
 }
 
 .flexColumnEnds {
-  margin-top: 20vh;
+  margin-top: 8rem;
+  height: 4em;
 }
 
 .busySwitch {
-  margin-top: 20vh;
-  font-size: 2em;
+  margin-top: 2rem;
+  font-size: 2rem;
   border-color: var(--main-dark);
 }
 
 .busy {
-  border-radius: 1em 0 0 1em;
+  border-radius: 2rem 0 0 2rem;
 }
 
 .free {
-  border-radius: 0 1em 1em 0;
+  border-radius: 0 2rem 2rem 0;
 }
 
 #notification {
   text-align: center;
-  font-size: 2em;
+  font-size: 2rem;
   color: var(--main-yellow);
-  -webkit-text-stroke: .025em var(--main-dark);
+  -webkit-text-stroke: .05rem var(--main-dark);
   font-weight: bold;
 }
 

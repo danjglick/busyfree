@@ -9,7 +9,7 @@ const Friend = props => {
         id={props.id}
         onClick={props.removeFriend}
         >
-        &nbsp;X
+        X
       </button>
       <br />
     </span>

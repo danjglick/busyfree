@@ -21,15 +21,15 @@ class BusySwitch extends Component {
 
   tick() {
     fetch(`/api/v1/users/${JSON.parse(localStorage.user).id}`)
-      .then(response => response.json())
-      .then(body => {
-        if (JSON.parse(localStorage.user).id != 1) {
-          this.setState({
-            busyOrFree: body.busy_or_free,
-            connectedTo: body.connected_to
-          })
-        }
-      })
+    .then(response => response.json())
+    .then(body => {
+      if (JSON.parse(localStorage.user).id != 1) {
+        this.setState({
+          busyOrFree: body.busy_or_free,
+          connectedTo: body.connected_to
+        })
+      }
+    })
     if (this.state.connectedTo) {
       this.props.notify(this.state.connectedTo)
     } else if (JSON.parse(localStorage.user).id != 1) {
@@ -49,20 +49,20 @@ class BusySwitch extends Component {
       },
       credentials: 'same-origin'
     })
-      .then(response => response.json())
-      .then(body => {
-        this.setState({
-          busyOrFree: body.busy_or_free,
-          connectedTo: body.connected_to
-        })
-        if (JSON.parse(localStorage.user).id == 1) {
-          if (this.state.busyOrFree == 'free') {
-            this.props.promptGuest()
-          } else {
-            this.props.clearNotification()
-          }
-        }
+    .then(response => response.json())
+    .then(body => {
+      this.setState({
+        busyOrFree: body.busy_or_free,
+        connectedTo: body.connected_to
       })
+      if (JSON.parse(localStorage.user).id == 1) {
+        if (this.state.busyOrFree == 'free') {
+          this.props.promptGuest()
+        } else {
+          this.props.clearNotification()
+        }
+      }
+    })
   }
 
   render() {
