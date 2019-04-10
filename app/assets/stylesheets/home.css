@@ -28,7 +28,7 @@
   text-align: center;
   font-size: 2rem;
   color: var(--main-yellow);
-  -webkit-text-stroke: .05rem var(--main-dark);
+  -webkit-text-stroke: .05rem black;
   font-weight: bold;
 }
 
